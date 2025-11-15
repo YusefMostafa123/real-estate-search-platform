@@ -1,0 +1,255 @@
+ID,school_name,borough,building_code,average_math,average_reading,average_writing,percent_tested,name_key,lat,long,overall_score,performance_level
+1,Essex Street Academy,Manhattan,M445,395,411,387,78.9,essex street academy,40.716778,-73.989337,398,Medium Performance
+2,Lower Manhattan Arts Academy,Manhattan,M445,418,428,415,65.1,lower manhattan arts academy,40.716778,-73.989337,420,Medium Performance
+3,High School for Dual Language and Asian Studies,Manhattan,M445,613,453,463,95.9,high school for dual language and asian studies,40.716778,-73.989337,510,High Performance
+4,Henry Street School for International Studies,Manhattan,M056,410,406,381,59.7,henry street school for international studies,40.713684,-73.986336,399,Medium Performance
+5,Bard High School Early College,Manhattan,M097,634,641,639,70.8,bard high school early college,40.719029,-73.975891,638,High Performance
+6,Marta Valle High School,Manhattan,M025,438,413,394,35.6,marta valle high school,40.720581,-73.985645,415,Medium Performance
+7,University Neighborhood High School,Manhattan,M446,437,355,352,69.9,university neighborhood high school,40.712399,-73.984497,381,Low Performance
+8,New Design High School,Manhattan,M445,381,396,372,73.7,new design high school,40.716778,-73.989337,383,Low Performance
+9,Pace High School,Manhattan,M131,430,435,427,87.8,pace high school,40.716553,-73.993092,431,Medium Performance
+10,International High School at Union Square,Manhattan,M460,403,330,316,53.2,international high school at union square,40.735494,-73.987659,350,Low Performance
+11,Institute for Collaborative Education,Manhattan,M475,501,550,541,78.6,institute for collaborative education,40.732447,-73.983031,531,High Performance
+12,Gramercy Arts High School,Manhattan,M460,446,459,455,79.6,gramercy arts high school,40.735494,-73.987659,453,High Performance
+13,Urban Assembly New York Harbor School,Manhattan,M877,446,453,428,78.8,urban assembly new york harbor school,40.701695,-74.011631,442,High Performance
+14,Richard R. Green High School of Teaching,Manhattan,M282,411,415,409,60.0,richard r. green high school of teaching,40.70568,-74.013302,412,Medium Performance
+15,Millennium High School,Manhattan,M824,577,560,567,94.0,millennium high school,40.704487,-74.011556,568,High Performance
+16,High School of Economics and Finance,Manhattan,M833,469,442,447,66.8,high school of economics and finance,40.709196,-74.012022,453,High Performance
+17,Leadership and Public Service High School,Manhattan,M894,390,396,392,54.9,leadership and public service high school,40.70873,-74.012332,393,Medium Performance
+18,East Side Community School,Manhattan,M060,454,428,445,85.2,east side community school,40.729589,-73.982555,442,High Performance
+19,Baruch College Campus High School,Manhattan,M874,592,526,531,94.3,baruch college campus high school,40.74193,-73.986521,550,High Performance
+20,School of the Future High School,Manhattan,M660,534,533,522,89.9,school of the future high school,40.738952,-73.985479,530,High Performance
+21,Manhattan Village Academy,Manhattan,M873,522,479,510,98.8,manhattan village academy,40.741497,-73.991512,504,High Performance
+22,Hudson High School of Learning Technologies,Manhattan,M440,378,407,388,71.8,hudson high school of learning technologies,40.742867,-74.002136,391,Low Performance
+23,Manhattan Business Academy,Manhattan,M440,410,407,399,69.7,manhattan business academy,40.742867,-74.002136,405,Medium Performance
+24,Landmark High School,Manhattan,M440,386,386,386,30.6,landmark high school,40.742867,-74.002136,386,Low Performance
+25,Chelsea Career and Technical Education High School,Manhattan,M615,439,418,400,80.4,chelsea career and technical education high school,40.7244,-74.004625,419,Medium Performance
+26,NYC iSchool,Manhattan,M615,518,515,503,96.0,nyc ischool,40.7244,-74.004625,512,High Performance
+27,Unity Center for Urban Technologies,Manhattan,M620,375,385,387,62.8,unity center for urban technologies,40.746176,-73.981241,382,Low Performance
+28,Business of Sports School,Manhattan,M625,395,386,371,67.5,business of sports school,40.76337,-73.990593,384,Low Performance
+29,High School for Environmental Studies,Manhattan,M834,469,454,444,74.0,high school for environmental studies,40.767791,-73.987531,456,High Performance
+30,Art and Design High School,Manhattan,M488,455,475,458,70.1,art and design high school,40.75924,-73.967203,463,High Performance
+31,Manhattan Bridges High School,Manhattan,M535,409,360,347,84.4,manhattan bridges high school,40.765184,-73.992953,372,Low Performance
+32,Urban Assembly Gateway School for Technology,Manhattan,M625,445,432,415,78.4,urban assembly gateway school for technology,40.76337,-73.990593,431,Medium Performance
+33,Food and Finance High School,Manhattan,M535,428,435,421,52.0,food and finance high school,40.765184,-73.992953,428,Medium Performance
+34,Eleanor Roosevelt High School,Manhattan,M855,641,617,631,86.0,eleanor roosevelt high school,40.770187,-73.953608,630,High Performance
+35,Beacon High School,Manhattan,M837,583,586,595,82.8,beacon high school,40.772007,-73.987479,588,High Performance
+36,High School of Arts and Technology,Manhattan,M490,421,428,406,44.4,high school of arts and technology,40.774351,-73.984753,418,Medium Performance
+37,Manhattan / Hunter Science High School,Manhattan,M490,581,531,535,97.2,manhattan / hunter science high school,40.774351,-73.984753,549,High Performance
+38,Frank McCourt High School,Manhattan,M470,489,491,500,89.1,frank mccourt high school,40.785803,-73.974614,493,High Performance
+39,Columbia Secondary School,Manhattan,M125,583,561,546,88.2,columbia secondary school,40.810431,-73.955809,563,High Performance
+40,Urban Assembly School for the Performing Arts,Manhattan,M043,379,399,388,76.7,urban assembly school for the performing arts,40.815256,-73.955325,389,Low Performance
+41,Central Park East High School,Manhattan,M013,483,468,439,97.9,central park east high school,40.793763,-73.949381,463,High Performance
+42,Park East High School,Manhattan,M495,429,433,435,89.6,park east high school,40.790543,-73.944356,432,Medium Performance
+43,Young Women's Leadership School,Manhattan,M895,478,465,472,100.0,young women's leadership school,40.792741,-73.947428,472,High Performance
+44,Manhattan Center for Science and Mathematics,Manhattan,M435,556,505,495,87.6,manhattan center for science and mathematics,40.793856,-73.934028,519,High Performance
+45,Mott Hall High School,Manhattan,M136,416,445,440,36.9,mott hall high school,40.817372,-73.947712,434,High Performance
+46,A. Philip Randolph Campus High School,Manhattan,M540,459,453,447,74.0,a. philip randolph campus high school,40.818188,-73.950356,453,High Performance
+47,Community Health Academy of the Heights,Manhattan,M814,387,389,385,55.3,community health academy of the heights,40.833687,-73.942072,387,Low Performance
+48,Washington Heights Expeditionary Learning School,Manhattan,M143,443,423,434,87.0,washington heights expeditionary learning school,40.848908,-73.930948,433,High Performance
+49,Coalition School for Social Change,Manhattan,M045,344,368,367,40.5,coalition school for social change,40.798884,-73.933319,360,Low Performance
+50,Repertory Company High School for Theatre Arts,Manhattan,M896,425,451,458,89.5,repertory company high school for theatre arts,40.755843,-73.984382,445,High Performance
+51,Professional Performing Arts High School,Manhattan,M017,496,520,516,72.2,professional performing arts high school,40.761448,-73.988019,511,High Performance
+52,Murry Bergtraum High School for Business Careers,Manhattan,M520,418,415,398,44.3,murry bergtraum high school for business careers,40.711442,-74.000851,410,Medium Performance
+53,Frederick Douglass Academy,Manhattan,M010,463,452,450,65.1,frederick douglass academy,40.824319,-73.93712,455,High Performance
+54,High School for Media and Communications,Manhattan,M465,378,381,383,33.0,high school for media and communications,40.855954,-73.927051,381,Low Performance
+55,High School for Law and Public Service,Manhattan,M465,401,394,381,44.1,high school for law and public service,40.855954,-73.927051,392,Low Performance
+56,City College Academy of the Arts,Manhattan,M218,495,445,450,95.3,city college academy of the arts,40.86079,-73.930672,463,High Performance
+57,High School for Health Careers and Sciences,Manhattan,M465,374,385,389,56.2,high school for health careers and sciences,40.855954,-73.927051,383,Low Performance
+58,Manhattan International High School,Manhattan,M480,438,358,382,58.6,manhattan international high school,40.765359,-73.960059,393,Medium Performance
+59,Talent Unlimited High School,Manhattan,M480,485,498,496,89.3,talent unlimited high school,40.765359,-73.960059,493,High Performance
+60,Vanguard High School,Manhattan,M480,431,409,396,63.8,vanguard high school,40.765359,-73.960059,412,Medium Performance
+61,Life Sciences Secondary School,Manhattan,M645,435,440,425,63.0,life sciences secondary school,40.783625,-73.945637,433,High Performance
+62,Stuyvesant High School,Manhattan,M477,754,697,693,97.4,stuyvesant high school,40.71759,-74.013748,715,High Performance
+63,Curtis High School,Staten Island,R450,453,458,444,64.2,curtis high school,40.644735,-74.081222,452,High Performance
+64,Port Richmond High School,Staten Island,R445,432,427,425,44.6,port richmond high school,40.634573,-74.141818,428,Medium Performance
+65,Staten Island Technical High School,Staten Island,R440,711,660,670,99.7,staten island technical high school,40.567873,-74.115373,680,High Performance
+66,New Dorp High School,Staten Island,R435,454,446,444,63.7,new dorp high school,40.569393,-74.107737,448,High Performance
+67,Susan E. Wagner High School,Staten Island,R460,496,490,487,66.3,susan e. wagner high school,40.596803,-74.124227,491,High Performance
+68,Gaynor McCown Expeditionary Learning School,Staten Island,R043,442,458,454,55.8,gaynor mccown expeditionary learning school,40.581315,-74.158589,451,High Performance
+69,CSI High School for International Studies,Staten Island,R043,477,468,464,83.5,csi high school for international studies,40.581315,-74.158589,470,High Performance
+70,New Explorers High School,Bronx,X790,390,398,376,30.4,new explorers high school,40.82231,-73.923829,388,Low Performance
+71,Urban Assembly School for Careers in Sports,Bronx,X790,402,405,395,55.5,urban assembly school for careers in sports,40.82231,-73.923829,401,Medium Performance
+72,Bronx Leadership Academy II High School,Bronx,X790,384,355,361,61.3,bronx leadership academy ii high school,40.82231,-73.923829,367,Low Performance
+73,Health Opportunities High School,Bronx,X884,374,386,382,57.9,health opportunities high school,40.815938,-73.930386,381,Low Performance
+74,Community School for Social Justice,Bronx,X884,380,382,362,38.4,community school for social justice,40.815938,-73.930386,375,Low Performance
+75,Academy for Language and Technology,Bronx,X082,371,334,348,78.9,academy for language and technology,40.849623,-73.91607,351,Low Performance
+76,International Community High School,Bronx,X139,345,338,312,58.2,international community high school,40.81004,-73.917792,332,Low Performance
+77,Hostos-Lincoln Academy of Science,Bronx,X162,463,451,435,80.0,hostos-lincoln academy of science,40.815498,-73.91224,450,High Performance
+78,University Heights Secondary School,Bronx,X470,420,446,424,87.8,university heights secondary school,40.81825,-73.91103,430,Medium Performance
+79,Mott Haven Village Preparatory High School,Bronx,X470,377,373,369,44.9,mott haven village preparatory high school,40.81825,-73.91103,373,Low Performance
+80,High School for Violin and Dance,Bronx,X400,363,401,396,31.3,high school for violin and dance,40.827642,-73.904473,387,Low Performance
+81,Bronx Career and College Preparatory High School,Bronx,X158,370,379,381,40.7,bronx career and college preparatory high school,40.827743,-73.900105,377,Low Performance
+82,Bronx Center for Science and Mathematics,Bronx,X002,513,468,485,73.9,bronx center for science and mathematics,40.833665,-73.902499,489,High Performance
+83,Bronx Latin,Bronx,X158,394,381,363,81.0,bronx latin,40.827743,-73.900105,379,Low Performance
+84,School for Excellence,Bronx,X400,377,385,383,38.4,school for excellence,40.827642,-73.904473,382,Low Performance
+85,Morris Academy for Collaborative Studies,Bronx,X400,407,389,386,44.8,morris academy for collaborative studies,40.827642,-73.904473,394,Medium Performance
+86,Frederick Douglass Academy III Secondary School,Bronx,X148,387,386,386,50.5,frederick douglass academy iii secondary school,40.833511,-73.90449,386,Low Performance
+87,Urban Assembly School for Applied Math and Science,Bronx,X970,445,418,422,87.8,urban assembly school for applied math and science,40.839244,-73.901316,428,Medium Performance
+88,Bronx Collegiate Academy,Bronx,X410,395,401,382,45.5,bronx collegiate academy,40.840422,-73.91091,393,Medium Performance
+89,Mott Hall Bronx High School,Bronx,X970,417,399,398,46.2,mott hall bronx high school,40.839244,-73.901316,405,Medium Performance
+90,Bronx Leadership Academy High School,Bronx,X876,375,372,374,49.1,bronx leadership academy high school,40.843588,-73.903236,374,Low Performance
+91,Bronx High School for Medical Science,Bronx,X410,431,421,426,83.9,bronx high school for medical science,40.840422,-73.91091,426,Medium Performance
+92,Eagle Academy for Young Men,Bronx,X465,398,410,397,65.7,eagle academy for young men,40.844958,-73.89705,402,Medium Performance
+93,Bronx High School of Business,Bronx,X410,365,360,346,33.3,bronx high school of business,40.840422,-73.91091,357,Low Performance
+94,DreamYard Preparatory School,Bronx,X410,385,385,388,51.1,dreamyard preparatory school,40.840422,-73.91091,386,Low Performance
+95,Theatre Arts Production Company School,Bronx,X137,402,421,410,77.7,theatre arts production company school,40.854493,-73.896717,411,Medium Performance
+96,Bronx High School for Law and Community Service,Bronx,X435,401,402,386,64.8,bronx high school for law and community service,40.860043,-73.888267,396,Medium Performance
+97,Belmont Preparatory High School,Bronx,X435,413,408,402,55.3,belmont preparatory high school,40.860043,-73.888267,408,Medium Performance
+98,Fordham High School for the Arts,Bronx,X435,398,404,412,56.2,fordham high school for the arts,40.860043,-73.888267,405,Medium Performance
+99,Holcombe L. Rucker School of Community Research,Bronx,X039,376,372,369,59.0,holcombe l. rucker school of community research,40.817512,-73.898212,372,Low Performance
+100,Banana Kelly High School,Bronx,X039,378,391,378,25.7,banana kelly high school,40.817512,-73.898212,382,Low Performance
+101,Bronx Studio School for Writers and Artists,Bronx,X392,417,412,403,71.6,bronx studio school for writers and artists,40.820579,-73.893128,411,Medium Performance
+102,Peace and Diversity Academy,Bronx,X099,366,362,365,27.1,peace and diversity academy,40.827315,-73.897612,364,Low Performance
+103,East Bronx Academy for the Future,Bronx,X973,418,406,408,41.1,east bronx academy for the future,40.836356,-73.888361,411,Medium Performance
+104,Bronx Envision Academy,Bronx,X098,364,385,366,76.5,bronx envision academy,40.8359,-73.890458,372,Low Performance
+105,Fannie Lou Hamer Freedom High School,Bronx,X878,345,347,339,75.0,fannie lou hamer freedom high school,40.83087,-73.88626,344,Low Performance
+106,Explorations Academy,Bronx,X098,377,372,365,43.0,explorations academy,40.8359,-73.890458,371,Low Performance
+107,Urban Assembly School for Wildlife Conservation,Bronx,X067,393,397,379,71.1,urban assembly school for wildlife conservation,40.843945,-73.884788,390,Low Performance
+108,Wings Academy,Bronx,X879,379,372,373,49.2,wings academy,40.841794,-73.875366,375,Low Performance
+109,Herbert H. Lehman High School,Bronx,X405,426,419,407,28.9,herbert h. lehman high school,40.840702,-73.838545,417,Medium Performance
+110,Bronx School of Law and Finance,Bronx,X475,384,394,366,48.3,bronx school of law and finance,40.877105,-73.912256,381,Low Performance
+111,Bronx Engineering and Technology Academy,Bronx,X475,394,406,391,59.6,bronx engineering and technology academy,40.877105,-73.912256,397,Medium Performance
+112,Bronx Theatre High School,Bronx,X475,382,384,390,66.7,bronx theatre high school,40.877105,-73.912256,385,Low Performance
+113,Marble Hill High School for International Studies,Bronx,X475,451,417,423,92.9,marble hill high school for international studies,40.877105,-73.912256,430,Medium Performance
+114,New World High School,Bronx,X362,407,363,358,93.0,new world high school,40.887831,-73.852694,376,Low Performance
+115,High School for Contemporary Arts,Bronx,X425,367,381,361,41.0,high school for contemporary arts,40.875953,-73.86197,370,Low Performance
+116,Bronx Aerospace High School,Bronx,X425,403,410,393,50.5,bronx aerospace high school,40.875953,-73.86197,402,Medium Performance
+117,Bronx Academy of Health Careers,Bronx,X425,386,380,391,59.4,bronx academy of health careers,40.875953,-73.86197,386,Low Performance
+118,High School of Computers and Technology,Bronx,X425,396,399,377,65.6,high school of computers and technology,40.875953,-73.86197,391,Low Performance
+119,Bronx Lab School,Bronx,X425,407,416,401,77.4,bronx lab school,40.875953,-73.86197,408,Medium Performance
+120,High School for Teaching and the Professions,Bronx,X430,372,361,369,46.5,high school for teaching and the professions,40.870293,-73.898309,367,Low Performance
+121,Bronx High School of Science,Bronx,X445,714,660,667,97.0,bronx high school of science,40.87759,-73.89104,680,High Performance
+122,Discovery High School,Bronx,X430,432,396,395,39.9,discovery high school,40.870293,-73.898309,408,Medium Performance
+123,High School of American Studies at Lehman College,Bronx,X905,669,672,672,91.8,high school of american studies at lehman college,40.873938,-73.895382,671,High Performance
+124,DeWitt Clinton High School,Bronx,X440,445,436,433,31.8,dewitt clinton high school,40.882178,-73.88691,438,High Performance
+125,International School for Liberal Arts,Bronx,X430,390,387,379,19.2,international school for liberal arts,40.870293,-73.898309,385,Low Performance
+126,Astor Collegiate Academy,Bronx,X415,422,417,409,57.9,astor collegiate academy,40.859665,-73.861006,416,Medium Performance
+127,Pelham Preparatory Academy,Bronx,X415,420,433,425,77.0,pelham preparatory academy,40.859665,-73.861006,426,Medium Performance
+128,High School of Language and Innovation,Bronx,X415,356,340,320,72.7,high school of language and innovation,40.859665,-73.861006,339,Low Performance
+129,Collegiate Institute for Math and Science,Bronx,X415,488,461,458,79.8,collegiate institute for math and science,40.859665,-73.861006,469,High Performance
+130,Bronxdale High School,Bronx,X415,418,432,436,72.5,bronxdale high school,40.859665,-73.861006,429,Medium Performance
+131,Pan American International High School at Monroe,Bronx,X420,317,315,292,65.6,pan american international high school at monroe,40.831601,-73.878912,308,Low Performance
+132,Mott Hall V,Bronx,X423,430,422,414,77.5,mott hall v,40.831416,-73.877785,422,Medium Performance
+133,High School of World Cultures,Bronx,X420,356,359,347,38.2,high school of world cultures,40.831601,-73.878912,354,Low Performance
+134,Millennium Art Academy,Bronx,X450,396,413,395,39.2,millennium art academy,40.82229,-73.856167,401,Medium Performance
+135,Bronx Guild,Bronx,X450,365,393,357,41.3,bronx guild,40.82229,-73.856167,372,Low Performance
+136,Pablo Neruda Academy,Bronx,X450,394,384,383,44.2,pablo neruda academy,40.82229,-73.856167,387,Low Performance
+137,Women's Academy of Excellence,Bronx,X174,386,390,389,45.2,women's academy of excellence,40.814833,-73.85658,388,Low Performance
+138,Bronx Health Sciences High School,Bronx,X455,407,421,427,87.1,bronx health sciences high school,40.874091,-73.833904,418,Medium Performance
+139,Queens Vocational and Technical High School,Queens,Q600,467,436,432,53.4,queens vocational and technical high school,40.742205,-73.928219,445,High Performance
+140,High School of Applied Communication,Queens,Q735,435,437,441,70.9,high school of applied communication,40.745095,-73.936635,438,High Performance
+141,Academy for Careers in Television and Film,Queens,Q404,444,458,444,95.0,academy for careers in television and film,40.742956,-73.959196,449,High Performance
+142,Academy of American Studies,Queens,Q451,495,482,479,84.8,academy of american studies,40.751331,-73.937434,485,High Performance
+143,Newcomers High School,Queens,Q450,490,374,381,47.1,newcomers high school,40.751356,-73.937445,415,Medium Performance
+144,Bard High School Early College Queens,Queens,Q735,631,598,610,94.1,bard high school early college queens,40.745095,-73.936635,613,High Performance
+145,Information Technology High School,Queens,Q725,443,420,411,58.8,information technology high school,40.748701,-73.94638,425,Medium Performance
+146,William Cullen Bryant High School,Queens,Q445,466,424,426,56.9,william cullen bryant high school,40.75823,-73.910514,439,High Performance
+147,Long Island City High School,Queens,Q452,430,423,412,51.6,long island city high school,40.765826,-73.9328,422,Medium Performance
+148,Frank Sinatra School of the Arts High School,Queens,Q570,536,543,543,89.5,frank sinatra school of the arts high school,40.756534,-73.925121,541,High Performance
+149,Baccalaureate School for Global Education,Queens,Q798,633,620,628,98.5,baccalaureate school for global education,40.755366,-73.927169,627,High Performance
+150,Brooklyn International High School,Brooklyn,K805,432,334,333,92.7,brooklyn international high school,40.697339,-73.985016,366,Low Performance
+151,School for International Studies,Brooklyn,K293,417,406,394,65.1,school for international studies,40.685419,-73.993351,406,Medium Performance
+152,Brooklyn School for Global Studies,Brooklyn,K293,393,381,402,61.8,brooklyn school for global studies,40.685419,-73.993351,392,Low Performance
+153,Cobble Hill School of American Studies,Brooklyn,K804,416,420,402,55.3,cobble hill school of american studies,40.684524,-73.990993,413,Medium Performance
+154,Urban Assembly High School of Music and Art,Brooklyn,K805,372,372,361,55.1,urban assembly high school of music and art,40.697339,-73.985016,368,Low Performance
+155,Cultural Academy for the Arts and Sciences,Brooklyn,K415,382,395,384,57.3,cultural academy for the arts and sciences,40.648657,-73.922171,387,Low Performance
+156,Kurt Hahn Expeditionary Learning School,Brooklyn,K415,378,394,388,72.6,kurt hahn expeditionary learning school,40.648657,-73.922171,387,Low Performance
+157,It Takes a Village Academy,Brooklyn,K415,364,374,361,62.2,it takes a village academy,40.648657,-73.922171,366,Low Performance
+158,Urban Assembly School for Criminal Justice,Brooklyn,K223,428,413,417,83.6,urban assembly school for criminal justice,40.634875,-73.981528,419,Medium Performance
+159,Franklin Delano Roosevelt High School,Brooklyn,K505,504,411,407,54.0,franklin delano roosevelt high school,40.620446,-73.981795,441,High Performance
+160,Dr. Susan S. McKinney Secondary School of the Arts,Brooklyn,K265,332,346,350,55.1,dr. susan s. mckinney secondary school of the arts,40.696324,-73.97578,343,Low Performance
+161,Benjamin Banneker Academy,Brooklyn,K914,479,484,472,85.5,benjamin banneker academy,40.695332,-73.969243,478,High Performance
+162,Juan Morel Campos Secondary School,Brooklyn,K071,366,356,353,56.3,juan morel campos secondary school,40.703624,-73.953146,358,Low Performance
+163,Green School: An Academy for Environmental Careers,Brooklyn,K049,384,398,399,41.1,green school: an academy for environmental careers,40.709941,-73.943641,394,Medium Performance
+164,Lyons Community School,Brooklyn,K049,374,376,357,56.3,lyons community school,40.709941,-73.943641,369,Low Performance
+165,FDNY High School for Fire and Life Safety,Brooklyn,K435,365,369,357,47.7,fdny high school for fire and life safety,40.667456,-73.894747,364,Low Performance
+166,High School for Civil Rights,Brooklyn,K435,391,373,376,26.4,high school for civil rights,40.667456,-73.894747,380,Low Performance
+167,Performing Arts and Technology High School,Brooklyn,K435,375,393,394,39.8,performing arts and technology high school,40.667456,-73.894747,387,Low Performance
+168,East New York Family Academy,Brooklyn,K819,464,451,421,66.7,east new york family academy,40.661072,-73.886942,445,High Performance
+169,Brooklyn Lab School,Brooklyn,K420,383,376,370,46.8,brooklyn lab school,40.691146,-73.868328,376,Low Performance
+170,Cypress Hills Collegiate Preparatory School,Brooklyn,K420,365,370,362,53.8,cypress hills collegiate preparatory school,40.691146,-73.868328,366,Low Performance
+171,Academy for Young Writers,Brooklyn,K422,382,413,391,81.2,academy for young writers,40.657459,-73.874756,395,Medium Performance
+172,Academy of Innovative Technology,Brooklyn,K420,395,376,359,57.4,academy of innovative technology,40.691146,-73.868328,377,Low Performance
+173,Fort Hamilton High School,Brooklyn,K490,513,456,451,68.7,fort hamilton high school,40.627835,-74.040046,473,High Performance
+174,Midwood High School,Brooklyn,K405,550,514,516,85.7,midwood high school,40.633237,-73.952929,527,High Performance
+175,PROGRESS High School for Professional Careers,Brooklyn,K450,380,377,384,44.9,progress high school for professional careers,40.712184,-73.939722,380,Low Performance
+176,Brooklyn Preparatory High School,Brooklyn,K650,391,406,391,74.5,brooklyn preparatory high school,40.715073,-73.954754,396,Medium Performance
+177,El Puente Academy for Peace and Justice,Brooklyn,K778,344,380,379,62.5,el puente academy for peace and justice,40.705898,-73.955611,368,Low Performance
+178,School for Legal Studies,Brooklyn,K450,393,390,394,34.8,school for legal studies,40.712184,-73.939722,392,Low Performance
+179,Williamsburg Preparatory School,Brooklyn,K650,443,440,430,87.8,williamsburg preparatory school,40.715073,-73.954754,438,High Performance
+180,Frederick Douglass Academy VII High School,Brooklyn,K175,400,407,394,65.4,frederick douglass academy vii high school,40.665878,-73.911705,400,Medium Performance
+181,Teachers Preparatory High School,Brooklyn,K175,394,399,412,56.6,teachers preparatory high school,40.665878,-73.911705,402,Medium Performance
+182,Academy for Health Careers,Brooklyn,K625,406,405,396,48.1,academy for health careers,40.675612,-73.938843,402,Medium Performance
+183,High School of Sports Management,Brooklyn,K400,367,374,361,56.2,high school of sports management,40.594291,-73.98577,367,Low Performance
+184,Brooklyn Studio Secondary School,Brooklyn,K721,458,434,434,67.8,brooklyn studio secondary school,40.604879,-73.994404,442,High Performance
+185,International High School at Lafayette,Brooklyn,K400,424,343,337,84.3,international high school at lafayette,40.594291,-73.98577,368,Low Performance
+186,New Utrecht High School,Brooklyn,K445,488,422,417,63.2,new utrecht high school,40.613262,-74.003404,442,High Performance
+187,Life Academy High School for Film and Music,Brooklyn,K400,369,379,378,70.2,life academy high school for film and music,40.594291,-73.98577,375,Low Performance
+188,Kingsborough Early College School,Brooklyn,K400,474,462,449,65.8,kingsborough early college school,40.594291,-73.98577,462,High Performance
+189,Secondary School for Journalism,Brooklyn,K460,408,435,415,58.8,secondary school for journalism,40.669629,-73.979287,419,Medium Performance
+190,Park Slope Collegiate,Brooklyn,K460,405,377,395,59.6,park slope collegiate,40.669629,-73.979287,392,Low Performance
+191,Secondary School for Law,Brooklyn,K460,420,424,414,74.7,secondary school for law,40.669629,-73.979287,419,Medium Performance
+192,Bedford Academy High School,Brooklyn,K994,505,464,456,96.2,bedford academy high school,40.68538,-73.954302,475,High Performance
+193,Brooklyn High School of the Arts,Brooklyn,K655,439,441,436,80.6,brooklyn high school of the arts,40.683559,-73.98027,439,High Performance
+194,Brooklyn Technical High School,Brooklyn,K430,682,608,606,95.5,brooklyn technical high school,40.688834,-73.976905,632,High Performance
+195,Brooklyn College Academy,Brooklyn,K917,502,495,493,98.1,brooklyn college academy,40.649404,-73.971736,497,High Performance
+196,Brooklyn High School for Law and Technology,Brooklyn,K987,395,401,383,62.7,brooklyn high school for law and technology,40.688831,-73.920906,393,Medium Performance
+197,Automotive High School,Brooklyn,K610,367,381,328,31.6,automotive high school,40.721981,-73.953281,359,Low Performance
+198,Frances Perkins Academy,Brooklyn,K610,399,413,400,46.3,frances perkins academy,40.721981,-73.953281,404,Medium Performance
+199,John Dewey High School,Brooklyn,K540,512,418,396,62.7,john dewey high school,40.589268,-73.981738,442,High Performance
+200,Rachel Carson High School for Coastal Studies,Brooklyn,K303,436,430,421,68.4,rachel carson high school for coastal studies,40.582533,-73.973132,429,Medium Performance
+201,Brooklyn Academy of Science and the Environment,Brooklyn,K440,419,411,416,58.5,brooklyn academy of science and the environment,40.670349,-73.961695,415,Medium Performance
+202,Medgar Evers College Preparatory School,Brooklyn,K590,525,500,481,89.0,medgar evers college preparatory school,40.667195,-73.951167,502,High Performance
+203,Clara Barton High School,Brooklyn,K600,408,424,407,55.0,clara barton high school,40.669567,-73.961962,413,Medium Performance
+204,International High School at Prospect Heights,Brooklyn,K440,344,302,300,81.7,international high school at prospect heights,40.670349,-73.961695,315,Low Performance
+205,Academy of Hospitality and Tourism,Brooklyn,K465,374,385,375,62.0,academy of hospitality and tourism,40.649787,-73.95855,378,Low Performance
+206,James Madison High School,Brooklyn,K425,492,450,444,69.0,james madison high school,40.609912,-73.948512,462,High Performance
+207,Edward R. Murrow High School,Brooklyn,K525,500,479,472,75.2,edward r. murrow high school,40.620525,-73.959285,484,High Performance
+208,Sunset Park High School,Brooklyn,K564,398,380,381,61.6,sunset park high school,40.65571,-74.005197,386,Low Performance
+209,Gotham Professional Arts Academy,Brooklyn,K040,377,396,386,50.7,gotham professional arts academy,40.680463,-73.922264,386,Low Performance
+210,Leon M. Goldstein High School for the Sciences,Brooklyn,K535,563,534,543,94.0,leon m. goldstein high school for the sciences,40.580894,-73.935952,547,High Performance
+211,Abraham Lincoln High School,Brooklyn,K410,441,422,422,54.9,abraham lincoln high school,40.581681,-73.967308,428,Medium Performance
+212,Urban Action Academy,Brooklyn,K500,362,396,393,44.9,urban action academy,40.641474,-73.898254,384,Low Performance
+213,Brooklyn Generation School,Brooklyn,K515,392,406,403,50.0,brooklyn generation school,40.633285,-73.916735,400,Medium Performance
+214,High School for Medical Professions,Brooklyn,K500,404,427,424,60.2,high school for medical professions,40.641474,-73.898254,418,Medium Performance
+215,Victory Collegiate High School,Brooklyn,K515,386,408,402,72.7,victory collegiate high school,40.633285,-73.916735,399,Medium Performance
+216,Brooklyn Theatre Arts High School,Brooklyn,K515,379,393,373,69.1,brooklyn theatre arts high school,40.633285,-73.916735,382,Low Performance
+217,Academy for Conservation and the Environment,Brooklyn,K515,381,397,390,50.8,academy for conservation and the environment,40.633285,-73.916735,389,Low Performance
+218,All City Leadership Secondary School,Brooklyn,K554,467,446,448,85.0,all city leadership secondary school,40.69737,-73.913171,454,High Performance
+219,Bushwick School for Social Justice,Brooklyn,K480,365,357,357,50.0,bushwick school for social justice,40.69697,-73.910791,360,Low Performance
+220,Academy for Environmental Leadership,Brooklyn,K480,365,366,348,71.3,academy for environmental leadership,40.69697,-73.910791,360,Low Performance
+221,Academy of Urban Planning,Brooklyn,K480,392,374,379,41.9,academy of urban planning,40.69697,-73.910791,382,Low Performance
+222,ACORN Community High School,Brooklyn,K909,379,395,385,61.3,acorn community high school,40.678488,-73.962105,386,Low Performance
+223,East-West School of International Studies,Queens,Q237,521,457,451,89.4,east-west school of international studies,40.749545,-73.822073,476,High Performance
+224,Flushing International High School,Queens,Q189,481,323,323,67.7,flushing international high school,40.759844,-73.820548,376,Low Performance
+225,Bayside High School,Queens,Q405,523,479,485,76.7,bayside high school,40.771755,-73.780296,496,High Performance
+226,Benjamin N. Cardozo High School,Queens,Q415,563,505,510,75.6,benjamin n. cardozo high school,40.752333,-73.75599,526,High Performance
+227,Francis Lewis High School,Queens,Q430,562,483,485,80.7,francis lewis high school,40.740724,-73.79283,510,High Performance
+228,Robert F. Kennedy Community High School,Queens,Q707,460,426,423,67.3,robert f. kennedy community high school,40.725603,-73.810697,436,High Performance
+229,John Bowne High School,Queens,Q425,467,422,425,62.1,john bowne high school,40.738139,-73.824944,438,High Performance
+230,Townsend Harris High School,Queens,Q515,680,640,661,97.1,townsend harris high school,40.73439,-73.821392,660,High Performance
+231,High School for Arts and Business,Queens,Q456,413,405,393,76.7,high school for arts and business,40.737427,-73.853178,404,Medium Performance
+232,Civic Leadership Academy,Queens,Q744,435,424,418,68.9,civic leadership academy,40.74373,-73.870642,426,Medium Performance
+233,Maspeth High School,Queens,Q585,476,471,480,90.0,maspeth high school,40.729939,-73.887482,476,High Performance
+234,Pan American International High School,Queens,Q744,340,320,318,31.9,pan american international high school,40.74373,-73.870642,326,Low Performance
+235,Newtown High School,Queens,Q455,434,401,389,39.1,newtown high school,40.741122,-73.874721,408,Medium Performance
+236,Forest Hills High School,Queens,Q440,517,485,483,72.8,forest hills high school,40.729402,-73.845637,495,High Performance
+237,Queens Metropolitan High School,Queens,Q686,460,448,449,76.4,queens metropolitan high school,40.711367,-73.856698,452,High Performance
+238,Grover Cleveland High School,Queens,Q485,452,422,416,38.9,grover cleveland high school,40.711033,-73.908814,430,Medium Performance
+239,Excelsior Preparatory High School,Queens,Q420,384,407,400,70.1,excelsior preparatory high school,40.668235,-73.756839,397,Medium Performance
+240,Queens Preparatory Academy,Queens,Q420,423,422,403,83.7,queens preparatory academy,40.668235,-73.756839,416,Medium Performance
+241,John Adams High School,Queens,Q480,418,401,395,38.4,john adams high school,40.679639,-73.837298,405,Medium Performance
+242,Richmond Hill High School,Queens,Q475,413,406,399,37.9,richmond hill high school,40.695888,-73.833681,406,Medium Performance
+243,Cambria Heights Academy,Queens,Q799,418,424,411,58.5,cambria heights academy,40.711849,-73.771195,418,Medium Performance
+244,Martin Van Buren High School,Queens,Q435,397,396,391,40.0,martin van buren high school,40.733066,-73.738756,395,Medium Performance
+245,Queens Gateway to Health Sciences Secondary School,Queens,Q695,524,511,514,92.5,queens gateway to health sciences secondary school,40.718831,-73.806499,516,High Performance
+246,Jamaica Gateway to the Sciences,Queens,Q470,487,460,463,78.6,jamaica gateway to the sciences,40.713218,-73.797237,470,High Performance
+247,High School for Community Leadership,Queens,Q470,415,392,386,72.3,high school for community leadership,40.713218,-73.797237,398,Medium Performance
+248,York Early College Academy,Queens,Q008,496,481,473,92.9,york early college academy,40.69719,-73.787192,483,High Performance
+249,High School for Law Enforcement and Public Safety,Queens,Q690,410,431,409,56.6,high school for law enforcement and public safety,40.686208,-73.784144,417,Medium Performance
+250,August Martin High School,Queens,Q400,366,372,364,26.3,august martin high school,40.675633,-73.783342,367,Low Performance
+251,Frederick Douglass Academy VI High School,Queens,Q465,410,418,407,30.1,frederick douglass academy vi high school,40.60201,-73.762795,412,Medium Performance
+252,Channel View School for Research,Queens,Q410,427,430,423,76.6,channel view school for research,40.586066,-73.822624,427,Medium Performance
+253,Rockaway Collegiate High School,Queens,Q410,399,403,405,46.5,rockaway collegiate high school,40.586066,-73.822624,402,Medium Performance
+254,Scholars' Academy,Queens,Q180,588,560,568,99.2,scholars' academy,40.584109,-73.825711,572,High Performance
