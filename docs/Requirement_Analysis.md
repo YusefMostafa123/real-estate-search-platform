@@ -1,10 +1,10 @@
-# OverView  
+# Overview  
 Our goal with the Home Listing and Price Explorer project is to make a data driven application that will help users explore and analyze property listings for New York City. It is designed to function as a property search tool and a dashboard for visualizing trends.
 
 Our application will combine multiple public data sets so the user can not only see the basic information you would expect to see about a home listing like price, beds, baths, size but also have a deep understanding of the context and the surroundings of the home like nearby crime, school quality, fire department coverage, hospital accessibility, and borough demographic which will give users a richer understanding of the environment around each home.
 
 There will be two main roles in our system: 
-Program User: The buyer can utilize all the functionality like tsearch listings, filter results, view detailed neighborhood indicators, save favorites.
+Program User: The buyer can utilize all the functionality like searching listings, filter results, view detailed neighborhood indicators, save favorites.
 Admin: Is responsible for maintaining the data in the system. Admins can load cleaned datasets into the database, refresh them when new versions are available, and control thresholds for analytics, for example, the ranges we use to check nearby crimes.
 
 # Data Requirements  
