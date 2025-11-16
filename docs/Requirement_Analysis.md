@@ -1,69 +1,45 @@
 # OverView  
-Our goal with the Home Listing and Price Explorer project is to make a data driven application that will help users explore and analyze property listings for New York City. It is designed to function as a property search tool and a dashboard for visualizing trends. Our application will combine multiple public data sets so the user can not only see the basic information you would expect to see about a home listing like price, beds, baths, size but also have a deep understanding of the context and the surroundings of the home like nearby crime, school quality, fire department coverage, hospital accessibility, and borough demographic which will give users a richer understanding of the environment around each home.
+Our goal with the Home Listing and Price Explorer project is to make a data driven application that will help users explore and analyze property listings for New York City. It is designed to function as a property search tool and a dashboard for visualizing trends.
 
-Users will be able to look up homes, filter results based on things like price, area, number of bedrooms or bathrooms, and see analytics that summarize price distributions of homes. The main goal of the program is to give an intuitive and visually pleasing way to understand data about housing, letting users compare listings and make informed decisions.
+Our application will combine multiple public data sets so the user can not only see the basic information you would expect to see about a home listing like price, beds, baths, size but also have a deep understanding of the context and the surroundings of the home like nearby crime, school quality, fire department coverage, hospital accessibility, and borough demographic which will give users a richer understanding of the environment around each home.
 
 There will be two main roles in our system: 
-Program User: The buyer can utilize all the functionality talked about to compare homes. The user will also be able to list favorite listings.
+Program User: The buyer can utilize all the functionality like tsearch listings, filter results, view detailed neighborhood indicators, save favorites.
 Admin: Is responsible for maintaining the data in the system. Admins can load cleaned datasets into the database, refresh them when new versions are available, and control thresholds for analytics, for example, the ranges we use to check nearby crimes.
 
 # Data Requirements  
 Our program is built around several integrated tables. The housing table is central and main one, and the other datasets will enrich each listing with neighborhood indicators.
 
-### Housing Data (NY-Housing-Dataset-Cleaned) (This is the primary table)  
+### Housing Data (NY-Housing-Dataset-Cleaned)
 For each property, we have our dataset contains:  
-Id (unique listing identifier)  
-BROKERTITLE (listing broker)  
-TYPE (house/apartment type)  
-PRICE (listing price)  
-BEDS, BATH (bedroom and bathroom count)  
-PROPERTYSQFT (property size)  
-FORMATTED_ADDRESS (full property address)  
-LATITUDE, LONGITUDE (location for mapping)  
-COUNTY (borough where the home is)  
+Id (unique listing identifier), BROKERTITLE (listing broker), TYPE (house/apartment type), PRICE (listing price), BEDS, BATH (bedroom and bathroom count), PROPERTYSQFT (property size), FORMATTED_ADDRESS (full property address), LATITUDE, LONGITUDE (location for mapping), COUNTY (borough where the home is)  
+#### Purpose: This is the central table used to connect homes to the neighborhood info.  
 
-### Crime Data (NYPD-Arrest-Data-Cleaned)  (This table will be used to calculate crime density around each home)  
+### Crime Data (NYPD-Arrest-Data-Cleaned)  
 Columns we have:  
-Index, ARREST_KEY (unique identifiers)  
-PD_DESC, OFNS_DESC (offense descriptions)  
-LAW_CAT_CD (crime level (felony/misdemeanor))  
-ARREST_BORO, ARREST_PRECINCT (location info)  
-AGE_GROUP, PERP_SEX, PERP_RACE (demographic info)  
-Latitude, Longitude (location of arrest)  
+Index, ARREST_KEY (unique identifiers), PD_DESC, OFNS_DESC (offense descriptions), LAW_CAT_CD (crime level (felony/misdemeanor)), ARREST_BORO, ARREST_PRECINCT (location info), AGE_GROUP, PERP_SEX, PERP_RACE (demographic info), Latitude, Longitude (location of arrest)  
+#### Purpose: This table will be used to calculate crime density/count around each home.  
 
-### School Data (Schools+Locations-Cleaned) (This table will be used to give every home a school quality score using the closest school)  
+### School Data (Schools+Locations-Cleaned) 
 -These are two tables that we have joined together at this point  
 Each school has:  
-ID (unique school identifier)  
-school_name, borough, building_code (School info)  
-average_math, average_reading, average_writing (exam performance)  
-percent_tested (percent of students tested)  
-lat, long (school location)  
-overall_score, performance_level (school rating (we calculated it using exam performance))  
+ID (unique school identifier), school_name, borough, building_code (School info), average_math, average_reading, average_writing (exam performance), percent_tested (percent of students tested), lat, long (school location), overall_score, performance_level (school rating (we calculated it using exam performance))  
+#### Purpose: This table will be used to give every home a school quality score using the closest school.  
 
-### Fire Department Coverage (FDNY-Borough-Scores_Cleaned) (Used to give borough fire safety for homes in that borough)  
+### Fire Department Coverage (FDNY-Borough-Scores_Cleaned)  
 Each borough has:  
-Borough  
-Stations (count of fire stations)  
-SquareMiles (borough land area)  
-FD_Score_raw (stations per square mile)  
-FD_Score_100 (scaled fire safety score (0–100))  
+Borough, Stations (count of fire stations), SquareMiles (borough land area), FD_Score_raw (stations per square mile), FD_Score_100 (scaled fire safety score (0–100))  
+#### Purpose: Used to give borough fire safety for homes in that borough.  
 
-### Hospital Data (NY-Hospitals-Cleaned) (Used to calculate hospital accessibility score and performance for each home)  
+### Hospital Data (NY-Hospitals-Cleaned) 
 Columns:  
-Facility ID, Facility Name (unique identifiers)  
-Address, County/Parish (borough)  
-Hospital overall rating (quality score)  
-Hospital Ownership (Private/Public)  
-Patient_Survey_Rating (satisfaction metric)  
-Latitude, Longitude (hospital location)  
-Hospital_Quality_Label (Low/Medium/High)  
+Facility ID, Facility Name (unique identifiers), Address, County/Parish (borough), Hospital overall rating (quality score), Hospital Ownership (Private/Public), Patient_Survey_Rating (satisfaction metric), Latitude, Longitude (hospital location), Hospital_Quality_Label (Low/Medium/High)  
+#### Purpose: Used to calculate hospital accessibility score and performance for each home.  
 
-### Borough Age Distribution (NYC-Population-Cleaned) (Used to calculate age distribution for each borough  
+### Borough Age Distribution (NYC-Population-Cleaned)
 Columns:  
-Borough  
-Male %, Female %  
-Age groups (0-14, 15-29, 30-44, 45-59, 60-74, 75+) (in %)  
+Borough, Male %, Female %, Age groups (0-14, 15-29, 30-44, 45-59, 60-74, 75+) (in %)   
+#### Purpose: Used to calculate age distribution for each borough.  
 
 ### Relationships:  
 Housing - Borough:
