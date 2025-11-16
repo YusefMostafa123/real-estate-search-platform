@@ -66,15 +66,15 @@ Male %, Female %
 Age groups (0-14, 15-29, 30-44, 45-59, 60-74, 75+) (in %)
 
 ### Relationships:  
-Housing - Borough
+Housing - Borough:
 Each home belongs to exactly one borough. Borough level tables (FDNY scores and Population/Age) provide extra attributes.
-Housing - Crime
+Housing - Crime:
 A home can have zero or many nearby crime incidents based on distance range. Crime counts are aggregated per home.
-Housing - Schools
+Housing - Schools:
 Each home is linked to one and only one school, the closest school by coordinates. A school may correspond to many homes.
-Housing - Hospitals
+Housing - Hospitals:
 Each home is linked to one and only one closest hospital. A hospital may serve many homes.
-Borough - FDNY / Population
+Borough - FDNY / Population:
 Each borough has one fire coverage score and one demographic row used for dashboard analytics.
 
 # Application Requirements  
