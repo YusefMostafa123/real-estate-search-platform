@@ -53,6 +53,24 @@ Each home is linked to one and only one closest hospital. A hospital may serve m
 Borough - FDNY / Population:
 Each borough has one fire coverage score and one demographic row used for dashboard analytics.  
 
+# Web Technologies 
+### Client
+- HTML5 – page structure
+- CSS3 + Bootstrap 5 – layout + responsive styling
+Handles user interaction, sends GET/POST requests to the backend, and displays enriched home listing results.
+
+### Server
+- Python
+- Flask – routing, request handling, server logic
+Processes all client requests, queries SQLite, performs joins and calculations (crime density, nearest school, nearest hospital, borough metrics), and returns HTML or JSON.
+
+### Development Tools
+- VS Code
+- Git & GitHub
+- DB Browser for SQLite / SQLiteStudio 
+Used for development, dataset cleaning, debugging, and version control.
+
+
 # Application Requirements  
 
 ### User:
