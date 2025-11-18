@@ -106,3 +106,9 @@ Processes all client requests, queries SQLite, performs joins and calculations (
 - DB Browser for SQLite / SQLiteStudio 
 
 Used for development, dataset cleaning, debugging, and version control.
+
+
+
+# ER Diagram 
+
+
