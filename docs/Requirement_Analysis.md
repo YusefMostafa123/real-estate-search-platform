@@ -43,7 +43,7 @@ Borough (PK), Male %, Female %, Age groups (0-14, 15-29, 30-44, 45-59, 60-74, 75
 
 ### Log In  
 Columns:
-User_id (PK), Password  
+User_id (PK), Password, Status (Admin/User)
 
 ### Favorites   
 Columns: favorite_id (PK), user_id, home_id  
