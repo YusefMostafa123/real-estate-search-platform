@@ -59,7 +59,8 @@ Housing - Hospitals:
 Each home is linked to one and only one closest hospital. A hospital may serve many homes.  
 Borough - FDNY / Population:
 Each borough has one fire coverage score and one demographic row used for dashboard analytics.  
-
+Login - Favorites:
+Each user can save many favorite listings, Each favorite belongs to exactly one user, and Each favorite links one user to one home listing.
 
 # Application Requirements 
 
