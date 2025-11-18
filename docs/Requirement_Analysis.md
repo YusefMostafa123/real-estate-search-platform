@@ -96,5 +96,4 @@ Used for development, dataset cleaning, debugging, and version control.
 * Keeps the interface simple and informative, prioritizing clarity over complexity.
 * Maintains consistent styling and branding across all pages.
 * Contains a visual landing page as a 'home'.
-* 
 
