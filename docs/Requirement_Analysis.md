@@ -46,8 +46,7 @@ Columns:
 User_id (PK), Password  
 
 ### Favorites   
-Columns:  
-favorite_id (PK), user_id, home_id  
+Columns: favorite_id (PK), user_id, home_id  
 
 ### Relationships:  
 Housing - Borough:
