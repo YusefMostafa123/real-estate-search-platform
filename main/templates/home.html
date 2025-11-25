@@ -1,15 +1,28 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel= "stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
-    </head>
+{% extends "base.html" %}
 
-    <body>
-        <h1>Welcome to our Project!</h1>
-        <h3> This is a proof of concept page</h3>
+{% block title %}Home - Home Listing Explorer{% endblock %}
 
-        <form action="{{ url_for('useless_button_handler') }}" method="POST">
-            <button type="submit" name="useless_button">Delayed Reload</button>
-        </form>
-    </body>
-</html>
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 text-center">
+    <h2 class="mb-3">Welcome, {{ user_id }}!</h2>
+    <p class="text-muted">
+      Choose what you want to do:
+    </p>
+
+    <div class="d-grid gap-3 mt-4 mb-4">
+      <a href="{{ url_for('search') }}" class="btn btn-primary btn-lg">
+        🔍 Search Home Listings
+      </a>
+
+      <a href="{{ url_for('favorites') }}" class="btn btn-outline-secondary btn-lg">
+        ⭐ View Favorites
+      </a>
+    </div>
+
+    <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">
+      🚪 Log Out
+    </a>
+  </div>
+</div>
+{% endblock %}

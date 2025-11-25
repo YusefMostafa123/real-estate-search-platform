@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Home Details - Home Listing Explorer{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-center">
+  Showing info about:
+  <span class="text-success">
+    {{ house["FORMATTED_ADDRESS"] }}
+  </span>
+</h2>
+
+<div class="row g-4">
+
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-header text-center fw-bold">
+        Home
+      </div>
+      <div class="card-body">
+        <p><strong>Price:</strong>
+          ${{ "{:,.0f}".format(house["PRICE"]) }}</p>
+        <p><strong>Beds:</strong> {{ house["BEDS"] }}</p>
+        <p><strong>Baths:</strong> {{ house["BATH"] }}</p>
+        <p><strong>Sqft:</strong>
+          {% if house["PROPERTYSQFT"] %}
+            {{ house["PROPERTYSQFT"] }}
+          {% else %}
+            n/a
+          {% endif %}
+        </p>
+        <p><strong>Type:</strong> {{ house["TYPE"] or "n/a" }}</p>
+        <p><strong>County:</strong> {{ house["COUNTY"] }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-header text-center fw-bold">
+        Crime (within 0.6 miles)
+      </div>
+      <div class="card-body">
+        <p><strong>Total arrests:</strong> {{ crime.total_crimes }}</p>
+        <p><strong>Felonies:</strong> {{ crime.felonies }}
+          ({{ "%.1f"|format(crime.felony_rate * 100) }}%)</p>
+        <p><strong>Misdemeanors:</strong> {{ crime.misdemeanors }}
+          ({{ "%.1f"|format(crime.misdemeanor_rate * 100) }}%)</p>
+
+        <hr>
+
+        <p class="mb-1"><strong>Crime severity:</strong></p>
+        <span class="badge {{ crime.badge_class }} px-3 py-2"
+              style="font-size: 1.1rem;">
+          {{ crime.severity_label }}
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-header text-center fw-bold">
+        School
+      </div>
+      <div class="card-body">
+        {% if school %}
+          <p><strong>School name:</strong> {{ school.name }}</p>
+          <p><strong>Borough:</strong> {{ school.borough }}</p>
+          <p><strong>Distance:</strong>
+            {% if school.distance_miles is not none %}
+              {{ "%.2f"|format(school.distance_miles) }} miles
+            {% else %}
+              n/a
+            {% endif %}
+          </p>
+          <p><strong>Overall score:</strong>
+            {% if school.overall_score is not none %}
+              {{ "%.1f"|format(school.overall_score) }}
+            {% else %}
+              n/a
+            {% endif %}
+          </p>
+
+          <hr>
+
+          <p class="mb-1"><strong>Performance:</strong></p>
+          <span class="badge {{ school.badge_class }} px-3 py-2"
+                style="font-size: 1.1rem;">
+            {{ school.performance_band }}
+          </span>
+        {% else %}
+          <p class="text-muted">No nearby school found.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="mt-4">
+  <a href="{{ url_for('search') }}" class="btn btn-outline-secondary">
+    ← Back to search
+  </a>
+</div>
+{% endblock %}
+
