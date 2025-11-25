@@ -4,18 +4,28 @@ CREATE TABLE IF NOT EXISTS UserInformation (
     Status      TEXT NOT NULL 
 );
 
+DROP TABLE IF EXISTS NYHouseDataset;
 CREATE TABLE IF NOT EXISTS NYHouseDataset (
-    ID               INTEGER PRIMARY KEY,
-    BROKERTITLE      TEXT,
-    TYPE             TEXT,
-    PRICE            INTEGER,
-    BEDS             INTEGER,
-    BATH             INTEGER,
-    PROPERTYSQFT     INTEGER,
-    FORMATTED_ADDRESS TEXT,
-    LATITUDE         REAL,
-    LONGITUDE        REAL,
-    COUNTY           TEXT
+    ID                 INTEGER PRIMARY KEY,
+    BROKERTITLE        TEXT,
+    TYPE               TEXT,
+    PRICE              INTEGER,
+    BEDS               INTEGER,
+    BATH               REAL,
+    PROPERTYSQFT       INTEGER,
+    FORMATTED_ADDRESS  TEXT,
+    LATITUDE           REAL,
+    LONGITUDE          REAL,
+    COUNTY             TEXT,
+
+    --The extra stuff we are precomputing and adding to the orginal table
+    total_crimes          INTEGER,
+    felonies              INTEGER,
+    misdemeanors          INTEGER,
+    crime_severity        TEXT,   
+    school_id             INTEGER,
+    school_distance_miles REAL,
+    school_band           TEXT  
 );
 
 CREATE TABLE IF NOT EXISTS NYPDArrestData (
@@ -59,17 +69,3 @@ CREATE TABLE IF NOT EXISTS Favorites (
     UNIQUE(user_id, home_id)
 );
 
-----------------------------------------added for daving local file
-CREATE TABLE IF NOT EXISTS HouseStats (
-    HouseID               INTEGER PRIMARY KEY,
-    total_crimes          INTEGER,
-    felonies              INTEGER,
-    misdemeanors          INTEGER,
-    crime_severity        TEXT,   -- 'Low' / 'Medium' / 'High'
-    school_id             INTEGER,
-    school_distance_miles REAL,
-    school_band           TEXT    -- 'Low' / 'Medium' / 'High'
-);
-
-CREATE INDEX IF NOT EXISTS idx_housestats_school
-    ON HouseStats (school_id);

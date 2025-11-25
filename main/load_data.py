@@ -1,4 +1,3 @@
-
 import math
 import sqlite3
 import pandas as pd
@@ -8,11 +7,11 @@ ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "data" / "home_explorer.db"
 CLEANED = ROOT / "data" / "cleaned"
 
-MILES_PER_DEG = 69.0  # rough conversion for NYC scale
+MILES_PER_DEG = 69.0 
 
 
 def crime_severity_label(total_crimes: int) -> str:
-    # same thresholds you used in listing_detail
+    """Map total crimes to Low / Medium / High."""
     if total_crimes <= 166:
         return "Low"
     elif total_crimes <= 625:
@@ -22,7 +21,6 @@ def crime_severity_label(total_crimes: int) -> str:
 
 
 def get_crime_counts(conn, lat, lon, radius_miles=0.6):
-    """Count crimes in a circle of radius_miles around (lat, lon)."""
     radius_deg = radius_miles / MILES_PER_DEG
     lat_min = lat - radius_deg
     lat_max = lat + radius_deg
@@ -30,7 +28,7 @@ def get_crime_counts(conn, lat, lon, radius_miles=0.6):
     lon_max = lon + radius_deg
 
     cur = conn.cursor()
-    # index-friendly bounding box
+
     cur.execute(
         """
         SELECT Latitude, Longitude, LAW_CAT_CD
@@ -62,7 +60,6 @@ def get_crime_counts(conn, lat, lon, radius_miles=0.6):
 
 
 def get_nearest_school(conn, lat, lon, search_radius_miles=2.0):
-    """Find nearest school to (lat, lon) and return (row, dist_sq)."""
     radius_deg = search_radius_miles / MILES_PER_DEG
     lat_min = lat - radius_deg
     lat_max = lat + radius_deg
@@ -106,7 +103,7 @@ def get_nearest_school(conn, lat, lon, search_radius_miles=2.0):
         if not rows:
             return None, None
 
-    best = None
+    best_row = None
     best_dist_sq = None
     for row in rows:
         s_lat = row["lat"]
@@ -114,11 +111,11 @@ def get_nearest_school(conn, lat, lon, search_radius_miles=2.0):
         dlat = s_lat - lat
         dlon = s_lon - lon
         dist_sq = dlat * dlat + dlon * dlon
-        if best is None or dist_sq < best_dist_sq:
-            best = row
+        if best_row is None or dist_sq < best_dist_sq:
+            best_row = row
             best_dist_sq = dist_sq
 
-    return best, best_dist_sq
+    return best_row, best_dist_sq
 
 
 def main():
@@ -129,18 +126,22 @@ def main():
     with open(Path(__file__).parent / "schema.sql", "r") as f:
         conn.executescript(f.read())
 
+    cur.execute("DELETE FROM NYHouseDataset")
+    cur.execute("DELETE FROM NYPDArrestData")
+    cur.execute("DELETE FROM NYSchoolDataset")
+    conn.commit()
+
     houses = pd.read_csv(CLEANED / "NY-House-Dataset-Cleaned.csv")
-    houses.to_sql("NYHouseDataset", conn, if_exists="replace", index=False)
+    houses.to_sql("NYHouseDataset", conn, if_exists="append", index=False)
 
     crime = pd.read_csv(CLEANED / "NYPD-Arrest-Data-Cleaned.csv")
-    crime.to_sql("NYPDArrestData", conn, if_exists="replace", index=False)
+    crime.to_sql("NYPDArrestData", conn, if_exists="append", index=False)
 
     schools = pd.read_csv(CLEANED / "Schools+Locations-Cleaned.csv")
-    schools.to_sql("NYSchoolDataset", conn, if_exists="replace", index=False)
+    schools.to_sql("NYSchoolDataset", conn, if_exists="append", index=False)
 
-    cur.execute("DELETE FROM HouseStats")
+    print("Precomputing crime & school stats into NYHouseDataset...")
 
-    print("Precomputing HouseStats... (one-time offline step)")
     cur.execute("SELECT ID, LATITUDE, LONGITUDE FROM NYHouseDataset")
     house_rows = cur.fetchall()
 
@@ -170,53 +171,24 @@ def main():
 
         cur.execute(
             """
-            INSERT OR REPLACE INTO HouseStats
-            (HouseID, total_crimes, felonies, misdemeanors,
-             crime_severity, school_id, school_distance_miles, school_band)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            UPDATE NYHouseDataset
+            SET total_crimes          = ?,
+                felonies              = ?,
+                misdemeanors          = ?,
+                crime_severity        = ?,
+                school_id             = ?,
+                school_distance_miles = ?,
+                school_band           = ?
+            WHERE ID = ?
             """,
-            (hid, total, fel, mis, crime_sev,
-             school_id, distance_miles, school_band),
+            (total, fel, mis, crime_sev,
+             school_id, distance_miles, school_band, hid),
         )
 
     conn.commit()
     conn.close()
-    print("Database + HouseStats built at", DB_PATH)
+    print("Done! Database with precomputed stats at", DB_PATH)
 
 
 if __name__ == "__main__":
     main()
-
-
-'''does not save file to use>>>>>>>>>VVVVV
-import sqlite3
-import pandas as pd
-from pathlib import Path
-
-ROOT = Path(__file__).resolve().parents[1]
-DB_PATH = ROOT / "data" / "home_explorer.db"
-CLEANED = ROOT / "data" / "cleaned"
-
-
-def main():
-    conn = sqlite3.connect(DB_PATH)
-
-    with open(Path(__file__).parent / "schema.sql", "r") as f:
-        conn.executescript(f.read())
-
-    houses = pd.read_csv(CLEANED / "NY-House-Dataset-Cleaned.csv")
-    houses.to_sql("NYHouseDataset", conn, if_exists="replace", index=False)
-
-    crime = pd.read_csv(CLEANED / "NYPD-Arrest-Data-Cleaned.csv")
-    crime.to_sql("NYPDArrestData", conn, if_exists="replace", index=False)
-
-    schools = pd.read_csv(CLEANED / "Schools+Locations-Cleaned.csv")
-    schools.to_sql("NYSchoolDataset", conn, if_exists="replace", index=False)
-
-    
-    conn.close()
-    print("Database built at", DB_PATH)
-
-if __name__ == "__main__":
-    main()
-'''
