@@ -1,3 +1,129 @@
-body{
-    background-color: lightcoral;
+:root {
+  --bg: #F5F5F0;
+  --card: #E6D9C2;
+  --accent: #C3A78A;
+  --green: #547E64;
+}
+
+body {
+  background: var(--bg);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.aesthetic-heading {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.aesthetic-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  border: 1px solid var(--accent);
+}
+
+.aesthetic-green {
+  background: var(--green);
+  color: white;
+  border-radius: 10px;
+}
+
+.aesthetic-outline {
+  border: 1px solid var(--green);
+  color: var(--green);
+  border-radius: 10px;
+}
+
+.aesthetic-textbox {
+  border-radius: 10px;
+}
+
+.aesthetic-link {
+  text-decoration: none;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.aesthetic-label {
+  color: var(--green);
+  font-weight: 500;
+}
+
+.aesthetic-fav {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.card-title {
+  color: var(--green);
+}
+
+.price-tag {
+  color: var(--green);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: var(--green);
+  border-color: var(--green);
+}
+
+.btn-warning {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-compare {
+  background-color: var(--accent);
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  color: white;
+  font-weight: bold;
+}
+
+.compare-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 30px auto;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.compare-card {
+  background: var(--card);
+  border: 2px solid var(--green);
+  border-radius: 14px;
+  padding: 25px 30px;
+  width: 380px;
+  min-height: 320px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.compare-address {
+  color: var(--green);
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.compare-field {
+  margin: 10px 0;
+  font-size: 1.07rem;
+  line-height: 1.4;
+}
+
+.compare-field span {
+  color: var(--green);
+  font-weight: 600;
 }
