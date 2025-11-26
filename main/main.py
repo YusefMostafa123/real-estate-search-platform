@@ -3,20 +3,20 @@ import sqlite3
 from pathlib import Path
 import math
 
-RADIUS_MILES = 0.6 
+RADIUS_MILES = 0.6
 MILES_PER_DEGREE = 69.0
 RADIUS_DEG = RADIUS_MILES / MILES_PER_DEGREE
 RADIUS_SQ = RADIUS_DEG * RADIUS_DEG
 
-LOW_MAX_CRIMES = 166 
+LOW_MAX_CRIMES = 166
 MEDIUM_MAX_CRIMES = 625
-
 
 app = Flask(__name__)
 app.secret_key = "change-this"
 
 ROOT = Path(__file__).resolve().parents[1]
 DB_PATH = ROOT / "data" / "home_explorer.db"
+
 
 def get_db():
     conn = sqlite3.connect(DB_PATH)
@@ -25,7 +25,6 @@ def get_db():
 
 
 def crime_severity_label(total_crimes: int) -> str:
-
     if total_crimes <= LOW_MAX_CRIMES:
         return "Low"
     elif total_crimes <= MEDIUM_MAX_CRIMES:
@@ -34,26 +33,12 @@ def crime_severity_label(total_crimes: int) -> str:
         return "High"
 
 
-def get_nearest_school(conn, lat, lon):
-    cur = conn.cursor()
-    cur.execute(
-        """
-        SELECT *,
-               ((lat - ?) * (lat - ?) + (long - ?) * (long - ?)) AS dist_sq
-        FROM NYSchoolDataset
-        ORDER BY dist_sq
-        LIMIT 1
-        """,
-        (lat, lat, lon, lon),
-    )
-    school = cur.fetchone()
-    cur.close()
-    return school
 @app.route("/")
 def index():
     if "user_id" in session:
         return redirect(url_for("home"))
     return redirect(url_for("login"))
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -77,6 +62,7 @@ def login():
             return render_template("login.html", error="Invalid credentials")
 
     return render_template("login.html", error=None)
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -107,12 +93,14 @@ def register():
 
     return render_template("register.html", error=None)
 
+
 @app.route("/logout")
 def logout():
     session.clear()
     return redirect(url_for("login"))
 
-# ---------- HOME ----------
+
+
 @app.route("/home")
 def home():
     if "user_id" not in session:
@@ -120,7 +108,7 @@ def home():
     return render_template("home.html", user_id=session["user_id"])
 
 
-# ---------- SEARCH ----------
+
 @app.route("/search")
 def search():
     if "user_id" not in session:
@@ -128,15 +116,13 @@ def search():
 
     q = request.args.get("q", "").strip()
 
+    # Ranges
     min_price = request.args.get("min_price", "").strip()
     max_price = request.args.get("max_price", "").strip()
-
     min_beds = request.args.get("min_beds", "").strip()
     max_beds = request.args.get("max_beds", "").strip()
-
     min_baths = request.args.get("min_baths", "").strip()
     max_baths = request.args.get("max_baths", "").strip()
-
     min_sqft = request.args.get("min_sqft", "").strip()
     max_sqft = request.args.get("max_sqft", "").strip()
 
@@ -161,6 +147,7 @@ def search():
     school_med_checked = cb_on("school_medium")
     school_high_checked = cb_on("school_high")
 
+    # Base query
     sql = """
         SELECT
             ID,
@@ -182,84 +169,42 @@ def search():
         conditions.append("UPPER(FORMATTED_ADDRESS) LIKE '%' || UPPER(?) || '%'")
         params.append(q)
 
-    if min_price:
+    # Ranges
+    def add_range(field, value, op):
         try:
-            conditions.append("PRICE >= ?")
-            params.append(int(min_price))
-        except ValueError:
+            if value:
+                conditions.append(f"{field} {op} ?")
+                params.append(float(value))
+        except:
             pass
 
-    if max_price:
-        try:
-            conditions.append("PRICE <= ?")
-            params.append(int(max_price))
-        except ValueError:
-            pass
+    add_range("PRICE", min_price, ">=")
+    add_range("PRICE", max_price, "<=")
+    add_range("BEDS", min_beds, ">=")
+    add_range("BEDS", max_beds, "<=")
+    add_range("BATH", min_baths, ">=")
+    add_range("BATH", max_baths, "<=")
+    add_range("PROPERTYSQFT", min_sqft, ">=")
+    add_range("PROPERTYSQFT", max_sqft, "<=")
 
-    if min_beds:
-        try:
-            conditions.append("BEDS >= ?")
-            params.append(int(min_beds))
-        except ValueError:
-            pass
-
-    if max_beds:
-        try:
-            conditions.append("BEDS <= ?")
-            params.append(int(max_beds))
-        except ValueError:
-            pass
-
-    if min_baths:
-        try:
-            conditions.append("BATH >= ?")
-            params.append(float(min_baths))
-        except ValueError:
-            pass
-
-    if max_baths:
-        try:
-            conditions.append("BATH <= ?")
-            params.append(float(max_baths))
-        except ValueError:
-            pass
-
-    if min_sqft:
-        try:
-            conditions.append("PROPERTYSQFT >= ?")
-            params.append(int(min_sqft))
-        except ValueError:
-            pass
-
-    if max_sqft:
-        try:
-            conditions.append("PROPERTYSQFT <= ?")
-            params.append(int(max_sqft))
-        except ValueError:
-            pass
-
+    # Crime severity filter
     crime_labels = []
-    if crime_low_checked:
-        crime_labels.append("Low")
-    if crime_med_checked:
-        crime_labels.append("Medium")
-    if crime_high_checked:
-        crime_labels.append("High")
-        
-    if has_filter_params and crime_labels and len(crime_labels) < 3:
+    if crime_low_checked: crime_labels.append("Low")
+    if crime_med_checked: crime_labels.append("Medium")
+    if crime_high_checked: crime_labels.append("High")
+
+    if has_filter_params and 0 < len(crime_labels) < 3:
         placeholders = ", ".join("?" * len(crime_labels))
         conditions.append(f"COALESCE(crime_severity, 'Medium') IN ({placeholders})")
         params.extend(crime_labels)
 
+    # School band filter
     school_labels = []
-    if school_low_checked:
-        school_labels.append("Low")
-    if school_med_checked:
-        school_labels.append("Medium")
-    if school_high_checked:
-        school_labels.append("High")
+    if school_low_checked: school_labels.append("Low")
+    if school_med_checked: school_labels.append("Medium")
+    if school_high_checked: school_labels.append("High")
 
-    if has_filter_params and school_labels and len(school_labels) < 3:
+    if has_filter_params and 0 < len(school_labels) < 3:
         placeholders = ", ".join("?" * len(school_labels))
         conditions.append(f"COALESCE(school_band, 'Medium') IN ({placeholders})")
         params.extend(school_labels)
@@ -267,23 +212,21 @@ def search():
     if conditions:
         sql += " WHERE " + " AND ".join(conditions)
 
+    # Sorting
     sort_map = {
-        "price_asc":  "PRICE ASC",
+        "price_asc": "PRICE ASC",
         "price_desc": "PRICE DESC",
-        "sqft_asc":   "PROPERTYSQFT ASC",
-        "sqft_desc":  "PROPERTYSQFT DESC",
-        "beds_asc":   "BEDS ASC, PRICE ASC",
-        "beds_desc":  "BEDS DESC, PRICE ASC",
-        "baths_asc":  "BATH ASC, PRICE ASC",
+        "sqft_asc": "PROPERTYSQFT ASC",
+        "sqft_desc": "PROPERTYSQFT DESC",
+        "beds_asc": "BEDS ASC, PRICE ASC",
+        "beds_desc": "BEDS DESC, PRICE ASC",
+        "baths_asc": "BATH ASC, PRICE ASC",
         "baths_desc": "BATH DESC, PRICE ASC",
     }
-    order_by = sort_map.get(sort, "PRICE ASC")
-    sql += f" ORDER BY {order_by} LIMIT 100"
+    sql += " ORDER BY " + sort_map.get(sort, "PRICE ASC") + " LIMIT 100"
 
     conn = get_db()
-    cur = conn.cursor()
-    cur.execute(sql, params)
-    rows = cur.fetchall()
+    rows = conn.execute(sql, params).fetchall()
     conn.close()
 
     results = [dict(r) for r in rows]
@@ -292,14 +235,10 @@ def search():
         "search.html",
         results=results,
         search_q=q,
-        min_price=min_price,
-        max_price=max_price,
-        min_beds=min_beds,
-        max_beds=max_beds,
-        min_baths=min_baths,
-        max_baths=max_baths,
-        min_sqft=min_sqft,
-        max_sqft=max_sqft,
+        min_price=min_price, max_price=max_price,
+        min_beds=min_beds, max_beds=max_beds,
+        min_baths=min_baths, max_baths=max_baths,
+        min_sqft=min_sqft, max_sqft=max_sqft,
         sort=sort,
         crime_low=crime_low_checked,
         crime_medium=crime_med_checked,
@@ -308,14 +247,50 @@ def search():
         school_medium=school_med_checked,
         school_high=school_high_checked,
     )
-    
-# ---------- FAVORITES ----------
+
+
+@app.route("/compare")
+def compare():
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    ids = request.args.get("ids", "")
+    try:
+        ids_list = [int(x) for x in ids.split(",") if x.strip()]
+    except:
+        ids_list = []
+
+    if len(ids_list) != 2:
+        return "Invalid comparison request", 400
+
+    conn = get_db()
+    sql = """
+        SELECT
+            ID,
+            FORMATTED_ADDRESS,
+            PRICE,
+            BEDS,
+            BATH,
+            PROPERTYSQFT,
+            total_crimes,
+            crime_severity,
+            school_band
+        FROM NYHouseDataset
+        WHERE ID IN (?, ?)
+    """
+    rows = conn.execute(sql, ids_list).fetchall()
+    conn.close()
+
+    listings = [dict(r) for r in rows]
+
+    return render_template("compare.html", listings=listings)
+
+
 @app.route("/favorites")
 def favorites():
     if "user_id" not in session:
         return redirect(url_for("login"))
 
-    # range filters
     price_min = request.args.get("price_min", type=int)
     price_max = request.args.get("price", type=int)
 
@@ -328,8 +303,7 @@ def favorites():
     sqft_min = request.args.get("sqft", type=int)
     sqft_max = request.args.get("sqft_max", type=int)
 
-    # sort dropdown (Price asc, Price desc, Sqft asc/desc, Beds asc/desc, Baths asc/desc)
-    sort_by = request.args.get("sort_by", default="price_asc", type=str)
+    sort_by = request.args.get("sort_by", default="price_asc")
 
     query = """
         SELECT h.*
@@ -339,56 +313,59 @@ def favorites():
     """
     params = [session["user_id"]]
 
-    # price range
+    def add_filter(field, value, op):
+        if value is not None:
+            query_parts.append(f"{field} {op} ?")
+            params.append(value)
+
+    query_parts = []
+
     if price_min is not None:
-        query += " AND h.PRICE >= ?"
+        query_parts.append("h.PRICE >= ?")
         params.append(price_min)
     if price_max is not None:
-        query += " AND h.PRICE <= ?"
+        query_parts.append("h.PRICE <= ?")
         params.append(price_max)
 
-    # beds range
     if beds_min is not None:
-        query += " AND h.BEDS >= ?"
+        query_parts.append("h.BEDS >= ?")
         params.append(beds_min)
     if beds_max is not None:
-        query += " AND h.BEDS <= ?"
+        query_parts.append("h.BEDS <= ?")
         params.append(beds_max)
 
-    # baths range
     if baths_min is not None:
-        query += " AND h.BATH >= ?"
+        query_parts.append("h.BATH >= ?")
         params.append(baths_min)
     if baths_max is not None:
-        query += " AND h.BATH <= ?"
+        query_parts.append("h.BATH <= ?")
         params.append(baths_max)
 
-    # sqft range
     if sqft_min is not None:
-        query += " AND h.PROPERTYSQFT >= ?"
+        query_parts.append("h.PROPERTYSQFT >= ?")
         params.append(sqft_min)
     if sqft_max is not None:
-        query += " AND h.PROPERTYSQFT <= ?"
+        query_parts.append("h.PROPERTYSQFT <= ?")
         params.append(sqft_max)
 
-    # sorting for favorites
+    if query_parts:
+        query += " AND " + " AND ".join(query_parts)
+
     sort_map = {
-        "price_asc":  "h.PRICE ASC",
+        "price_asc": "h.PRICE ASC",
         "price_desc": "h.PRICE DESC",
-        "sqft_asc":   "h.PROPERTYSQFT ASC",
-        "sqft_desc":  "h.PROPERTYSQFT DESC",
-        "beds_asc":   "h.BEDS ASC, h.PRICE ASC",
-        "beds_desc":  "h.BEDS DESC, h.PRICE ASC",
-        "baths_asc":  "h.BATH ASC, h.PRICE ASC",
+        "sqft_asc": "h.PROPERTYSQFT ASC",
+        "sqft_desc": "h.PROPERTYSQFT DESC",
+        "beds_asc": "h.BEDS ASC, h.PRICE ASC",
+        "beds_desc": "h.BEDS DESC, h.PRICE ASC",
+        "baths_asc": "h.BATH ASC, h.PRICE ASC",
         "baths_desc": "h.BATH DESC, h.PRICE ASC",
     }
-    order_clause = sort_map.get(sort_by, "h.PRICE ASC")
-    query += " ORDER BY " + order_clause
+
+    query += " ORDER BY " + sort_map.get(sort_by, "h.PRICE ASC")
 
     conn = get_db()
-    cur = conn.cursor()
-    cur.execute(query, tuple(params))
-    rows = cur.fetchall()
+    rows = conn.execute(query, tuple(params)).fetchall()
     conn.close()
 
     current_filters = {
@@ -418,8 +395,7 @@ def add_favorite():
     home_id = request.form["home_id"]
 
     conn = get_db()
-    cur = conn.cursor()
-    cur.execute(
+    conn.execute(
         "INSERT OR IGNORE INTO Favorites(user_id, home_id) VALUES (?, ?)",
         (session["user_id"], home_id),
     )
@@ -437,8 +413,7 @@ def remove_favorite():
     home_id = request.form["home_id"]
 
     conn = get_db()
-    cur = conn.cursor()
-    cur.execute(
+    conn.execute(
         "DELETE FROM Favorites WHERE user_id = ? AND home_id = ?",
         (session["user_id"], home_id),
     )
@@ -447,8 +422,6 @@ def remove_favorite():
 
     return redirect(url_for("favorites"))
 
-
-# ---------- LISTING DETAILS ----------
 @app.route("/listing/<int:home_id>")
 def listing_detail(home_id):
     if "user_id" not in session:
@@ -540,7 +513,6 @@ def listing_detail(home_id):
         crime=crime_info,
     )
 
-# ---------- LISTING DETAILS Fav----------
 
 @app.route("/favorites/listing/<int:home_id>")
 def listing_detail_fav(home_id):
@@ -627,7 +599,7 @@ def listing_detail_fav(home_id):
         school_info = None
 
     return render_template(
-        "listing_detail_fav.html", 
+        "listing_detail_fav.html",
         house=house,
         school=school_info,
         crime=crime_info,
