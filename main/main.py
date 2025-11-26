@@ -23,40 +23,6 @@ def get_db():
     conn.row_factory = sqlite3.Row
     return conn
 
-''' used with live serching not local file
-def get_crime_counts(conn, lat, lon):
-    """
-    Return (total_crimes, felonies, misdemeanors) within the chosen radius
-    around (lat, lon).
-    """
-    cur = conn.cursor()
-    cur.execute(
-        """
-        SELECT
-          COUNT(*) AS total_crimes,
-          SUM(CASE WHEN LAW_CAT_CD = 'F' THEN 1 ELSE 0 END) AS felonies,
-          SUM(CASE WHEN LAW_CAT_CD = 'M' THEN 1 ELSE 0 END) AS misdemeanors
-        FROM NYPDArrestData
-        WHERE
-          Latitude  BETWEEN ? AND ?
-          AND Longitude BETWEEN ? AND ?
-          AND (Latitude  - ?) * (Latitude  - ?) +
-              (Longitude - ?) * (Longitude - ?) <= ?
-        """,
-        (
-            lat - RADIUS_DEG, lat + RADIUS_DEG,
-            lon - RADIUS_DEG, lon + RADIUS_DEG,
-            lat, lat, lon, lon, RADIUS_SQ,
-        ),
-    )
-    row = cur.fetchone()
-    cur.close()
-
-    total = row["total_crimes"] or 0
-    felonies = row["felonies"] or 0
-    misdemeanors = row["misdemeanors"] or 0
-    return total, felonies, misdemeanors
-'''
 
 def crime_severity_label(total_crimes: int) -> str:
 
@@ -349,18 +315,100 @@ def favorites():
     if "user_id" not in session:
         return redirect(url_for("login"))
 
-    conn = get_db()
-    cur = conn.cursor()
-    cur.execute("""
+    # range filters
+    price_min = request.args.get("price_min", type=int)
+    price_max = request.args.get("price", type=int)
+
+    beds_min = request.args.get("beds", type=int)
+    beds_max = request.args.get("beds_max", type=int)
+
+    baths_min = request.args.get("baths", type=float)
+    baths_max = request.args.get("baths_max", type=float)
+
+    sqft_min = request.args.get("sqft", type=int)
+    sqft_max = request.args.get("sqft_max", type=int)
+
+    # sort dropdown (Price asc, Price desc, Sqft asc/desc, Beds asc/desc, Baths asc/desc)
+    sort_by = request.args.get("sort_by", default="price_asc", type=str)
+
+    query = """
         SELECT h.*
         FROM Favorites f
         JOIN NYHouseDataset h ON f.home_id = h.ID
         WHERE f.user_id = ?
-    """, (session["user_id"],))
+    """
+    params = [session["user_id"]]
+
+    # price range
+    if price_min is not None:
+        query += " AND h.PRICE >= ?"
+        params.append(price_min)
+    if price_max is not None:
+        query += " AND h.PRICE <= ?"
+        params.append(price_max)
+
+    # beds range
+    if beds_min is not None:
+        query += " AND h.BEDS >= ?"
+        params.append(beds_min)
+    if beds_max is not None:
+        query += " AND h.BEDS <= ?"
+        params.append(beds_max)
+
+    # baths range
+    if baths_min is not None:
+        query += " AND h.BATH >= ?"
+        params.append(baths_min)
+    if baths_max is not None:
+        query += " AND h.BATH <= ?"
+        params.append(baths_max)
+
+    # sqft range
+    if sqft_min is not None:
+        query += " AND h.PROPERTYSQFT >= ?"
+        params.append(sqft_min)
+    if sqft_max is not None:
+        query += " AND h.PROPERTYSQFT <= ?"
+        params.append(sqft_max)
+
+    # sorting for favorites
+    sort_map = {
+        "price_asc":  "h.PRICE ASC",
+        "price_desc": "h.PRICE DESC",
+        "sqft_asc":   "h.PROPERTYSQFT ASC",
+        "sqft_desc":  "h.PROPERTYSQFT DESC",
+        "beds_asc":   "h.BEDS ASC, h.PRICE ASC",
+        "beds_desc":  "h.BEDS DESC, h.PRICE ASC",
+        "baths_asc":  "h.BATH ASC, h.PRICE ASC",
+        "baths_desc": "h.BATH DESC, h.PRICE ASC",
+    }
+    order_clause = sort_map.get(sort_by, "h.PRICE ASC")
+    query += " ORDER BY " + order_clause
+
+    conn = get_db()
+    cur = conn.cursor()
+    cur.execute(query, tuple(params))
     rows = cur.fetchall()
     conn.close()
 
-    return render_template("favorites.html", favorites=rows)
+    current_filters = {
+        "price_min": price_min,
+        "price_max": price_max,
+        "beds_min": beds_min,
+        "beds_max": beds_max,
+        "baths_min": baths_min,
+        "baths_max": baths_max,
+        "sqft_min": sqft_min,
+        "sqft_max": sqft_max,
+    }
+
+    return render_template(
+        "favorites.html",
+        favorites=rows,
+        current_sort=sort_by,
+        current_filters=current_filters,
+    )
+
 
 @app.route("/favorites/add", methods=["POST"])
 def add_favorite():
@@ -371,31 +419,34 @@ def add_favorite():
 
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("""
-        INSERT OR IGNORE INTO Favorites(user_id, home_id)
-        VALUES (?, ?)
-    """, (session["user_id"], home_id))
+    cur.execute(
+        "INSERT OR IGNORE INTO Favorites(user_id, home_id) VALUES (?, ?)",
+        (session["user_id"], home_id),
+    )
     conn.commit()
     conn.close()
 
     return redirect(url_for("search"))
 
+
 @app.route("/favorites/remove", methods=["POST"])
 def remove_favorite():
     if "user_id" not in session:
         return redirect(url_for("login"))
+
     home_id = request.form["home_id"]
 
     conn = get_db()
     cur = conn.cursor()
-    cur.execute("""
-        DELETE FROM Favorites
-        WHERE user_id = ? AND home_id = ?
-    """, (session["user_id"], home_id))
+    cur.execute(
+        "DELETE FROM Favorites WHERE user_id = ? AND home_id = ?",
+        (session["user_id"], home_id),
+    )
     conn.commit()
     conn.close()
 
     return redirect(url_for("favorites"))
+
 
 # ---------- LISTING DETAILS ----------
 @app.route("/listing/<int:home_id>")
@@ -489,6 +540,98 @@ def listing_detail(home_id):
         crime=crime_info,
     )
 
+# ---------- LISTING DETAILS Fav----------
+
+@app.route("/favorites/listing/<int:home_id>")
+def listing_detail_fav(home_id):
+    if "user_id" not in session:
+        return redirect(url_for("login"))
+
+    conn = get_db()
+    conn.row_factory = sqlite3.Row
+    cur = conn.cursor()
+
+    cur.execute("""
+        SELECT
+            h.*,
+            s.school_name,
+            s.borough,
+            s.overall_score,
+            s.performance_level
+        FROM NYHouseDataset h
+        LEFT JOIN NYSchoolDataset s
+          ON s.ID = h.school_id
+        WHERE h.ID = ?
+    """, (home_id,))
+    row = cur.fetchone()
+    conn.close()
+
+    if not row:
+        return "House not found", 404
+
+    house = row
+
+    total_crimes = row["total_crimes"] or 0
+    felonies = row["felonies"] or 0
+    misdemeanors = row["misdemeanors"] or 0
+    crime_severity = row["crime_severity"] or "Medium"
+
+    if total_crimes > 0:
+        felony_rate = felonies / total_crimes
+        misdemeanor_rate = misdemeanors / total_crimes
+    else:
+        felony_rate = 0.0
+        misdemeanor_rate = 0.0
+
+    if crime_severity == "Low":
+        badge_class = "bg-success text-white"
+    elif crime_severity == "Medium":
+        badge_class = "bg-warning text-dark"
+    else:
+        badge_class = "bg-danger text-white"
+
+    crime_info = {
+        "total_crimes": total_crimes,
+        "felonies": felonies,
+        "misdemeanors": misdemeanors,
+        "felony_rate": felony_rate,
+        "misdemeanor_rate": misdemeanor_rate,
+        "severity_label": crime_severity,
+        "badge_class": badge_class,
+    }
+
+    if row["school_name"]:
+        perf_level = row["performance_level"] or ""
+        if "High" in perf_level:
+            perf_band = "High"
+            school_badge_class = "bg-success text-white"
+        elif "Medium" in perf_level:
+            perf_band = "Medium"
+            school_badge_class = "bg-warning text-dark"
+        elif "Low" in perf_level:
+            perf_band = "Low"
+            school_badge_class = "bg-danger text-white"
+        else:
+            perf_band = "Unknown"
+            school_badge_class = "bg-secondary text-white"
+
+        school_info = {
+            "name": row["school_name"],
+            "borough": row["borough"],
+            "overall_score": row["overall_score"],
+            "performance_band": perf_band,
+            "badge_class": school_badge_class,
+            "distance_miles": row["school_distance_miles"],
+        }
+    else:
+        school_info = None
+
+    return render_template(
+        "listing_detail_fav.html", 
+        house=house,
+        school=school_info,
+        crime=crime_info,
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)

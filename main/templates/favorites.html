@@ -1,1 +1,165 @@
+{% extends "base.html" %}
 
+{% block content %}
+<div class="container py-4">
+
+    <h1 class="text-center mb-4">Your Favorite Houses</h1>
+
+    <form method="get" action="{{ url_for('favorites') }}">
+        <div class="row mb-3 justify-content-center align-items-center">
+
+            <div class="col-md-4 d-flex justify-content-center mb-2 mb-md-0">
+                <div class="dropdown w-100">
+                    <button class="btn btn-secondary w-100 dropdown-toggle"
+                            type="button"
+                            id="favoritesFilterDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        Filter
+                    </button>
+
+                    <div class="dropdown-menu p-4"
+                         aria-labelledby="favoritesFilterDropdown"
+                         style="min-width: 320px; max-width: 340px;">
+
+                        <h5 class="fw-bold mb-2">Price range ($)</h5>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="number" class="form-control"
+                                       name="price_min" placeholder="Min"
+                                       value="{{ current_filters.price_min or '' }}">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control"
+                                       name="price" placeholder="Max"
+                                       value="{{ current_filters.price_max or '' }}">
+                            </div>
+                        </div>
+
+                        <h5 class="fw-bold mb-2">Beds range</h5>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="number" class="form-control"
+                                       name="beds" placeholder="Min"
+                                       value="{{ current_filters.beds_min or '' }}">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control"
+                                       name="beds_max" placeholder="Max"
+                                       value="{{ current_filters.beds_max or '' }}">
+                            </div>
+                        </div>
+
+                        <h5 class="fw-bold mb-2">Baths range</h5>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <input type="number" step="0.5" class="form-control"
+                                       name="baths" placeholder="Min"
+                                       value="{{ current_filters.baths_min or '' }}">
+                            </div>
+                            <div class="col">
+                                <input type="number" step="0.5" class="form-control"
+                                       name="baths_max" placeholder="Max"
+                                       value="{{ current_filters.baths_max or '' }}">
+                            </div>
+                        </div>
+
+                        <h5 class="fw-bold mb-2">Sqft range</h5>
+                        <div class="row mb-1">
+                            <div class="col">
+                                <input type="number" class="form-control"
+                                       name="sqft" placeholder="Min"
+                                       value="{{ current_filters.sqft_min or '' }}">
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control"
+                                       name="sqft_max" placeholder="Max"
+                                       value="{{ current_filters.sqft_max or '' }}">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 d-flex justify-content-center">
+                <div class="input-group">
+                    <span class="input-group-text">Sort</span>
+                    <select class="form-select" name="sort_by">
+                        <option value="price_asc" {% if current_sort == 'price_asc' %}selected{% endif %}>Price asc</option>
+                        <option value="price_desc" {% if current_sort == 'price_desc' %}selected{% endif %}>Price desc</option>
+                        <option value="sqft_asc" {% if current_sort == 'sqft_asc' %}selected{% endif %}>Sqft asc</option>
+                        <option value="sqft_desc" {% if current_sort == 'sqft_desc' %}selected{% endif %}>Sqft desc</option>
+                        <option value="beds_asc" {% if current_sort == 'beds_asc' %}selected{% endif %}>Beds asc</option>
+                        <option value="beds_desc" {% if current_sort == 'beds_desc' %}selected{% endif %}>Beds desc</option>
+                        <option value="baths_asc" {% if current_sort == 'baths_asc' %}selected{% endif %}>Baths asc</option>
+                        <option value="baths_desc" {% if current_sort == 'baths_desc' %}selected{% endif %}>Baths desc</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mb-3 justify-content-center">
+            <div class="col-md-7 d-flex">
+                <button type="submit" class="btn btn-primary me-2">Apply filters</button>
+                <a href="{{ url_for('favorites') }}" class="btn btn-outline-secondary">Reset</a>
+            </div>
+        </div>
+    </form>
+
+    <hr class="mb-4">
+
+    {% if favorites %}
+        {% for home in favorites %}
+            <a href="{{ url_for('listing_detail_fav', home_id=home['ID']) }}"
+               class="text-decoration-none text-dark">
+
+                <div class="card mb-3 shadow-sm hover-shadow"
+                     style="cursor: pointer;">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+
+                        <div>
+                            <h5 class="card-title mb-1">
+                                🏠 {{ home["FORMATTED_ADDRESS"] }}
+                            </h5>
+                            <p class="card-text text-muted mb-0">
+                                {{ home["COUNTY"] }} County ·
+                                {{ home["BEDS"] }} bd ·
+                                {{ home["BATH"] }} ba ·
+                                {{ home["PROPERTYSQFT"] }} sqft
+                            </p>
+                        </div>
+
+                        <div class="text-end">
+                            <div class="fw-bold fs-4 mb-2">
+                                ${{ "{:,.0f}".format(home["PRICE"]) }}
+                            </div>
+
+                            <form method="post"
+                                  action="{{ url_for('remove_favorite') }}">
+                                <input type="hidden" name="home_id" value="{{ home['ID'] }}">
+                                <button type="submit"
+                                        class="btn btn-outline-danger btn-sm">
+                                    Remove
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </a>
+        {% endfor %}
+    {% else %}
+        <p class="text-center text-muted mt-4">
+            You don’t have any favorites yet.
+        </p>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{{ url_for('search') }}" class="btn btn-secondary">Back to Search</a>
+    </div>
+
+</div>
+{% endblock %}
