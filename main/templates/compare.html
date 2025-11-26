@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center aesthetic-heading mt-4 mb-4">Comparing Houses</h2>
+<div class="compare-container">
+
+  {% for h in listings %}
+  <div class="compare-card">
+
+    <h4 class="compare-address">
+      {{ h['FORMATTED_ADDRESS'] or "Address N/A" }}
+    </h4>
+
+    <div class="compare-field">
+      <span>Price:</span>
+      {% if h['PRICE'] %}
+        ${{ "{:,.0f}".format(h['PRICE']) }}
+      {% else %}
+        N/A
+      {% endif %}
+    </div>
+
+    <div class="compare-field">
+      <span>SQFT:</span> {{ h['PROPERTYSQFT'] or "N/A" }}
+    </div>
+
+    <div class="compare-field">
+      <span>Beds:</span> {{ h['BEDS'] or "N/A" }}
+    </div>
+
+    <div class="compare-field">
+      <span>Baths:</span> {{ h['BATH'] or "N/A" }}
+    </div>
+
+    <div class="compare-field">
+      <span>Crime Level:</span> {{ h['crime_severity'] or "N/A" }}
+    </div>
+
+    <div class="compare-field">
+      <span>School Score:</span> {{ h['school_band'] or "N/A" }}
+    </div>
+
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
