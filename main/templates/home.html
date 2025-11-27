@@ -193,16 +193,13 @@
 
 <div class="home-page">
   
-  <!-- Welcome Header -->
   <div class="welcome-section">
     <h1 class="welcome-title">Welcome, {{ user_id }}!</h1>
     <p class="welcome-subtitle">What would you like to explore today?</p>
   </div>
 
-  <!-- Action Cards -->
   <div class="actions-container">
     
-    <!-- Search Listings Card -->
     <a href="{{ url_for('search') }}" class="action-card primary">
       <div class="action-icon">🔍</div>
       <div class="action-content">
@@ -211,7 +208,6 @@
       </div>
     </a>
 
-    <!-- View Favorites Card -->
     <a href="{{ url_for('favorites') }}" class="action-card secondary">
       <div class="action-icon">⭐</div>
       <div class="action-content">
@@ -222,7 +218,6 @@
 
   </div>
 
-  <!-- Logout Button -->
   <div class="logout-section">
     <a href="{{ url_for('logout') }}" class="logout-btn">
       🚪 Log Out

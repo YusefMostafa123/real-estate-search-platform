@@ -274,7 +274,7 @@ ID,BROKERTITLE,TYPE,PRICE,BEDS,BATH,PROPERTYSQFT,FORMATTED_ADDRESS,LATITUDE,LONG
 273,Brokered by Corcoran Chelsea/Flatiron,For sale,325000,2,1,2184.207862,"12 W 107th St #2b, New York, NY 10025, USA",40.7989043,-73.9604812,New York County
 274,Brokered by New York Realty Minimax,Multi-family home for sale,1230000,4,3,2184.207862,"74-06 64th Ln, Flushing, NY 11385, USA",40.700194,-73.8907488,Queens County
 275,Brokered by Brown Harris Stevens - 445 Park Avenue,Co-op for sale,3950000,3,3,2184.207862,"2 Sutton Pl s, New York, NY 10022, USA",40.7573949,-73.9606545,New York County
-276,Brokered by ANNE LOPA REAL ESTATE,House for sale,2147483647,7,6,10000.0,"6659 Amboy Rd, Staten Island, NY 10309, USA",40.5184841,-74.2244185,Richmond County
+276,Brokered by ANNE LOPA REAL ESTATE,House for sale,214748364,7,6,10000.0,"6659 Amboy Rd, Staten Island, NY 10309, USA",40.5184841,-74.2244185,Richmond County
 277,Brokered by KELLER WILLIAMS REALTY LANDMARK II,Multi-family home for sale,1350000,10,5,3383.0,"188 Richmond St, Brooklyn, NY 11208, USA",40.6828535,-73.8769965,Kings County
 278,Brokered by OneSpace Realty Group LLC,House for sale,799000,5,3,1800.0,"1124 E 51st St, Brooklyn, NY 11234, USA",40.6336127,-73.9276041,Kings County
 279,Brokered by Keller Williams Realty Greater Nassau,House for sale,1599000,5,3,5600.0,"1233 Todt Hill Rd, Staten Island, NY 10304, USA",40.5813757,-74.1131912,Richmond County

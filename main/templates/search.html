@@ -268,7 +268,6 @@
     compareBtn.textContent = "Compare Selected (" + selected.length + ")";
   }
 
-  // Restore checked boxes
   document.querySelectorAll(".compare-select").forEach(cb => {
     if (selected.includes(cb.value)) cb.checked = true;
 
