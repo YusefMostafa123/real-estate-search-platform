@@ -212,7 +212,7 @@
               </label>
             </div>
 
-            <a href="{{ url_for('listing_detail', home_id=h['ID']) }}"
+            <a href="{{ url_for('listing_by_id', home_id=h['ID']) }}"
                class="text-decoration-none text-dark">
               <span class="me-2" style="font-size: 1.5rem;">🏠</span>
               <strong>{{ h['FORMATTED_ADDRESS'] }}</strong>

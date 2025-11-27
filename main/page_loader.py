@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import db, sqlite3
 
-
 def load_search(request):
     if "user_id" not in session:
         return redirect(url_for("login"))

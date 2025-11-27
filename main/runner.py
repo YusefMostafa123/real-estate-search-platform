@@ -17,7 +17,7 @@ def search():
     return page_loader.load_search(request)
 
 @app.route("/favorites")
-def favorite():
+def favorites():
     return page_loader.load_favorites(request)
 
 @app.route("/favorites/add", methods=["POST"])
