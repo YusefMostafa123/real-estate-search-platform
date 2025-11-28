@@ -2,7 +2,7 @@ import db, page_loader, requests, sys, util, time # type: ignore
 from flask import Flask, request
 
 # Startup Sequence
-#util.clear_terminal()
+util.clear_terminal()
 app = Flask(
     import_name= "Home Listing and Price Explorer",
     template_folder = f'{util.ROOT}/templates',
