@@ -5,8 +5,8 @@ from flask import Flask, request
 util.clear_terminal()
 app = Flask(
     import_name= "Home Listing and Price Explorer",
-    template_folder = f'{util.ROOT}/templates',
-    static_folder = f'{util.ROOT}/static')
+    template_folder = util.TEMPLATE_PATH,
+    static_folder = util.STATIC_PATH)
 
 app.secret_key = 'CS480'
 app.config['EXPLAIN_TEMPLATE_LOADING'] = ("-d" in sys.argv)
