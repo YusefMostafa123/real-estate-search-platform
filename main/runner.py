@@ -2,9 +2,10 @@ import db, page_loader, requests, sys, util, time # type: ignore
 from flask import Flask, request
 
 # Startup Sequence
-util.clear_terminal()
+#util.clear_terminal()
 app = Flask("Home Listing and Price Explorer")
 app.secret_key = 'CS480'
+app.config['EXPLAIN_TEMPLATE_LOADING'] = ("-d" in sys.argv)
 
 def run():
     util.print_welcome_message()
