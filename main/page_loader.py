@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import render_template, redirect, url_for, session
 import db, sqlite3
 
 def load_search(request):

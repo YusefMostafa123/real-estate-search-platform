@@ -1,5 +1,5 @@
-import db, page_loader, requests, sys, util, time
-from flask import Flask, render_template, request, redirect, url_for, session
+import db, page_loader, requests, sys, util, time # type: ignore
+from flask import Flask, request
 
 # Startup Sequence
 util.clear_terminal()
