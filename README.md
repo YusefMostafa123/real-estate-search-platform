@@ -2,10 +2,10 @@
             HOME EXPLORER - CS 480-Databse Systems | Fall 2025
 
 ---OVERVIEW---
-Home Explorer is a web app that helps users search for houses in New York City, but with extra information. Instead of only showing the price, rooms and size, our app also includes important neighborhood details like crime activity and school performance.
+Home Explorer is a web app that helps users search for houses in New York City,but with extra information. Instead of only showing the price, number of rooms and square footage, our app also includes important neighborhood details such as crime activity and school performance.
 
 ---PURPOSE---
-The purpose of this project is to give users a better understanding of the area around a house not just the house itself. Our project combines housing data with safety and education data so users can get a more complete picture of what living there would be like.
+The purpose of this project is to give users a better understanding of the area around a property not just the property itself. Our project combines housing data with safety and education data so users can get a more complete picture of what living there would be like.
 
 ---FEATURES---
     For users:
