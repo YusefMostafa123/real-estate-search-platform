@@ -120,7 +120,7 @@ def load_search(request):
         "baths_asc": "BATH ASC, PRICE ASC",
         "baths_desc": "BATH DESC, PRICE ASC",
     }
-    sql += " ORDER BY " + sort_map.get(sort, "PRICE ASC") + " LIMIT 100"
+    sql += " ORDER BY " + sort_map.get(sort, "PRICE ASC") + " LIMIT 300"
 
     conn = db.get()
     rows = conn.execute(sql, params).fetchall()
