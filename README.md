@@ -1,4 +1,4 @@
-                # HOME EXPLORER – CS 480 Database Systems | Fall 2025
+                            # Real Estate Search Platform
 
 ## — OVERVIEW —
 Home Explorer is a web app that helps users search for houses in New York City, but with extra information.  
