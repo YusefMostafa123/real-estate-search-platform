@@ -7,6 +7,12 @@
 Home Explorer is a web app that helps users search for houses in New York City, but with extra information.  
 Instead of only showing the price, number of rooms, and square footage, our app also includes important neighborhood details such as crime activity and school performance.
 
+## Role and Ownership
+I was the main contributor to the backend and core application logic for this project.  
+My responsibilities included data modeling, backend implementation, feature integration, and deployment.
+
+I worked closely with team mates to integrate frontend components and ensure the system functioned as ready platform.
+
 ## — PURPOSE —
 The purpose of this project is to give users a better understanding of the area around a property, not just the property itself.  
 Our project combines housing data with safety and education data so users can get a more complete picture of what living there would be like.
