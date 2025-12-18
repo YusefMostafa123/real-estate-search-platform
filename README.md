@@ -1,5 +1,8 @@
                             # Real Estate Search Platform
 
+**Live Demo:** https://real-estate-search-platform.onrender.com  
+*Note: The application may take up to a minute to load on first visit because of cold start behavior on the hosting service.*
+
 ## — OVERVIEW —
 Home Explorer is a web app that helps users search for houses in New York City, but with extra information.  
 Instead of only showing the price, number of rooms, and square footage, our app also includes important neighborhood details such as crime activity and school performance.
