@@ -7,7 +7,7 @@
 Home Explorer is a web app that helps users search for houses in New York City, but with extra information.  
 Instead of only showing the price, number of rooms, and square footage, our app also includes important neighborhood details such as crime activity and school performance.
 
-## - Role and Ownership -
+## — Role and Ownership —
 I was the main contributor to the backend and core application logic for this project.  
 My responsibilities included data modeling, backend implementation, feature integration, and deployment.
 
