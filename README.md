@@ -1,6 +1,6 @@
                             # Real Estate Search Platform
 
-**Live Demo:** https://real-estate-search-platform.onrender.com  
+**Live Demo Website:** https://real-estate-search-platform.onrender.com  
 *Note: The application may take up to a minute to load on first visit because of cold start behavior on the hosting service.*
 
 ## — OVERVIEW —
